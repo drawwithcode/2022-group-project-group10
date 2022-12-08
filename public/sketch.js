@@ -1,21 +1,49 @@
-function preload() {
-  // put preload code here
+let clientSocket = io();
+clientSocket.on("connect", newConnection);
+clientSocket.on("mouseBroadcast", drawCircle);
+
+let randomR;
+let randomG;
+let randomB;
+
+
+function newConnection() {
+  console.log(clientSocket.id)
+}
+
+function drawCircle(dataReceived){
+  fill(dataReceived.r, dataReceived.g, dataReceived.b)
+  ellipse(dataReceived.x, dataReceived.y, 30)
 }
 
 function setup() {
+
   createCanvas(windowWidth, windowHeight);
-  // put setup code here
-  const message =
-    "This is a template reposotory\nfor the course elective Creative Coding\nCommunication Design, Politecnico di Milano";
-  textAlign(CENTER, CENTER);
-  textSize(16);
 
-  //dbsjskds
+  background("white")
 
-  text(message, width / 2, height / 2);
-  console.log("gruppo10");
+  randomR = random(255)
+  randomG = random(255)
+  randomB = random(255) 
+}
+
+function mouseMoved() {
+  let message = {
+    x : mouseX,
+    y : mouseY,
+    r: randomR,
+    g: randomG,
+    b: randomB
+  }
+
+  clientSocket.emit("mouse", message);
 }
 
 function draw() {
-  // put drawing code here
+ 
+  fill(randomR, randomG, randomB)
+  ellipse(mouseX, mouseY, 30)
+
 }
+
+
