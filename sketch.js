@@ -10,6 +10,8 @@ function setup() {
   textSize(16)
 	text(message, width/2, height/2);
 	console.log("gruppo10")
+
+	background(0);
 }
 
 function draw() {
