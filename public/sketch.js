@@ -20,7 +20,9 @@ function setup() {
 
   createCanvas(windowWidth, windowHeight);
 
-  background("white")
+  background("red")
+
+
 
   randomR = random(255)
   randomG = random(255)
