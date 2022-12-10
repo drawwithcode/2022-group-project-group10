@@ -8,7 +8,7 @@ let randomB;
 
 
 function newConnection() {
-  console.log(clientSocket.id)
+  console.log(clientSocket)
 }
 
 function drawCircle(dataReceived){
