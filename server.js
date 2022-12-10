@@ -12,12 +12,14 @@ let io = serverSocket(server);
 io.on("connection", newConnection);
 
 function newConnection(newSocket) {
-    console.log(newSocket.id);
+  console.log(newSocket.id);
 
-    newSocket.on("mouse", mouseReceived);
+  newSocket.on("mouse", mouseReceived);
 
-    function mouseReceived(dataReceived){
-        console.log(dataReceived);
-        newSocket.broadcast.emit("mouseBroadcast", dataReceived)
-    }
+  function mouseReceived(dataReceived) {
+    console.log(dataReceived);
+    newSocket.broadcast.emit("mouseBroadcast", dataReceived);
+  }
 }
+
+//ciao mamma
