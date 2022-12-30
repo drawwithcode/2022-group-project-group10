@@ -1,51 +1,46 @@
 let clientSocket = io();
+let message;
+let colorId = ["#fcba03", "#03fc62","#0318fc","#fc03f0", "#fc4a03"]
+let nameId;
 clientSocket.on("connect", newConnection);
-clientSocket.on("mouseBroadcast", drawCircle);
-
-let randomR;
-let randomG;
-let randomB;
+clientSocket.on("messageBroadcast", printMessage);
 
 
 function newConnection() {
   console.log(clientSocket)
 }
 
-function drawCircle(dataReceived){
-  fill(dataReceived.r, dataReceived.g, dataReceived.b)
-  ellipse(dataReceived.x, dataReceived.y, 30)
-}
-
 function setup() {
-
+  
+  colorId = random(colorId);
+  console.log(colorId)
+  nameId = "Luca";
   createCanvas(windowWidth, windowHeight);
-
-  background("red")
-
-
-
-  randomR = random(255)
-  randomG = random(255)
-  randomB = random(255) 
-}
-
-function mouseMoved() {
-  let message = {
-    x : mouseX,
-    y : mouseY,
-    r: randomR,
-    g: randomG,
-    b: randomB
-  }
-
-  clientSocket.emit("mouse", message);
+  background("white")
 }
 
 function draw() {
- 
-  fill(randomR, randomG, randomB)
-  ellipse(mouseX, mouseY, 30)
-
+  
 }
 
+function printMessage(message) {
+  textSize(16);
+  fill(message.color);
+  text(message.sender, 20, 60)
+  textSize(32);
+  fill("black");
+  text(message.content, 20, 90);
+}
 
+function keyPressed() {
+  if (keyCode === ENTER) {
+
+    message = {
+      content: "ciao a tutti",
+      color: colorId,
+      sender: nameId  
+    }
+    
+    clientSocket.emit("sendmessage", message);
+  }
+}

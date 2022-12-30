@@ -14,10 +14,16 @@ io.on("connection", newConnection);
 function newConnection(newSocket) {
     console.log(newSocket.id);
 
-    newSocket.on("mouse", mouseReceived);
+    newSocket.on("sendmessage", messageRecieved);
 
-    function mouseReceived(dataReceived){
-        console.log(dataReceived);
-        newSocket.broadcast.emit("mouseBroadcast", dataReceived)
+    function messageRecieved(message) {
+        console.log(message)
+
+        newSocket.broadcast.emit("messageBroadcast", message)
     }
+
+//     function mouseReceived(dataReceived){
+//         console.log(dataReceived);
+//         newSocket.broadcast.emit("mouseBroadcast", dataReceived)
+//     }
 }
