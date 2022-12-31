@@ -1,46 +1,40 @@
 let clientSocket = io();
-let message;
-let colorId = ["#fcba03", "#03fc62","#0318fc","#fc03f0", "#fc4a03"]
-let nameId;
+let colorsArray = ["#e6e6e6","#ffe500","#00ff6a","#ff0084","#00aeff"]
+let role;
+let index;
+let userColor;
+
 clientSocket.on("connect", newConnection);
-clientSocket.on("messageBroadcast", printMessage);
+clientSocket.on("updateUsers", updateUsers);
+
 
 
 function newConnection() {
-  console.log(clientSocket)
 }
 
-function setup() {
+function updateUsers (userArray) {
+
+  index = userArray.indexOf(clientSocket.id)
   
-  colorId = random(colorId);
-  console.log(colorId)
-  nameId = "Luca";
+  if (index == 0) {role = "server"; userColor = colorsArray[index]}
+  else if (index <=4) {role = "client n°" + index; userColor = colorsArray[index]}
+  else {role = "waiter"; userColor = colorsArray[0];}
+
+  console.log(userArray)
+
+}
+
+
+function setup() {
   createCanvas(windowWidth, windowHeight);
-  background("white")
 }
 
 function draw() {
   
-}
+  background(userColor)
 
-function printMessage(message) {
-  textSize(16);
-  fill(message.color);
-  text(message.sender, 20, 60)
   textSize(32);
-  fill("black");
-  text(message.content, 20, 90);
-}
+  textAlign(CENTER)
+  text("I'm the " + role, width/2, height/2)
 
-function keyPressed() {
-  if (keyCode === ENTER) {
-
-    message = {
-      content: "ciao a tutti",
-      color: colorId,
-      sender: nameId  
-    }
-    
-    clientSocket.emit("sendmessage", message);
-  }
 }

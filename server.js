@@ -4,6 +4,7 @@ let port = process.env.PORT || 3000;
 let server = app.listen(port);
 app.use(express.static("public"));
 
+
 console.log("running server on http://localhost:" + port);
 
 let serverSocket = require("socket.io");
@@ -11,19 +12,23 @@ let io = serverSocket(server);
 
 io.on("connection", newConnection);
 
+let userArray = []
+
 function newConnection(newSocket) {
-    console.log(newSocket.id);
 
-    newSocket.on("sendmessage", messageRecieved);
+    userArray.push(newSocket.id)
+    
+    newSocket.on("disconnect", function() {
+        let index = userArray.indexOf(newSocket.id)
+        if (index > -1) { 
+            userArray.splice(index, 1); 
+        }
 
-    function messageRecieved(message) {
-        console.log(message)
+        io.emit("updateUsers", userArray)
 
-        newSocket.broadcast.emit("messageBroadcast", message)
-    }
+    })
 
-//     function mouseReceived(dataReceived){
-//         console.log(dataReceived);
-//         newSocket.broadcast.emit("mouseBroadcast", dataReceived)
-//     }
+   io.emit("updateUsers", userArray)
+
+    
 }
