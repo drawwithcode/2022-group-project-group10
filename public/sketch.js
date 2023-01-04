@@ -59,7 +59,7 @@ function setup() {
 }
 
 function draw() {
-  background(userColor);
+  //background(userColor);
 
   textSize(32);
   textAlign(CENTER);
