@@ -3,6 +3,7 @@ let app = express();
 let port = process.env.PORT || 3000;
 let server = app.listen(port);
 app.use(express.static("public"));
+let collectetMessage;
 
 console.log("running server on http://localhost:" + port);
 
@@ -11,15 +12,40 @@ let io = serverSocket(server);
 
 io.on("connection", newConnection);
 
+let userArray = [];
+
 function newConnection(newSocket) {
-  console.log(newSocket.id);
-
-  newSocket.on("mouse", mouseReceived);
-
-  function mouseReceived(dataReceived) {
-    console.log(dataReceived);
-    newSocket.broadcast.emit("mouseBroadcast", dataReceived);
+  for (let i = 0; true; i++) {
+    if (typeof userArray[i] == "undefined") {
+      userArray[i] = newSocket.id;
+      break;
+    }
   }
-}
 
-//ciao mamma
+  //console.log(userArray);
+
+  newSocket.on("disconnect", function () {
+    let index = userArray.indexOf(newSocket.id);
+    if (index > -1) {
+      delete userArray[index];
+      //io.emit("updateUsers", userArray);
+    }
+  });
+
+  io.emit("updateUsers", userArray);
+
+  newSocket.on("send-chat-message", (message) => {
+    console.log(message);
+
+    newSocket.broadcast.emit("broadcast-message", message);
+  });
+
+  newSocket.on("get-message", (index) => {
+    if (typeof userArray[index] != "undefined") {
+      io.to(userArray[index]).emit("message-request");
+      console.log(index + "  è stato scansionato id:  " + userArray[index]);
+    } else {
+      console.log("il client " + index + " non è connesso");
+    }
+  });
+}
