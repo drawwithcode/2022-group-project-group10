@@ -48,4 +48,8 @@ function newConnection(newSocket) {
       console.log("il client " + index + " non è connesso");
     }
   });
+
+  newSocket.on("show-message",(index)=>{
+    newSocket.to(userArray[index]).emit("show-message");
+  })
 }

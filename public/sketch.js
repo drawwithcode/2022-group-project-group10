@@ -6,13 +6,15 @@ let userColor;
 let messageForm = document.getElementById("send-container");
 let messageInput = document.getElementById("message-input");
 let myMessage;
-let messageRecieved = false;
 let recievedMessage;
+let recievedMessageIndex;
+let onScreenMessage;
 
 clientSocket.on("connect", newConnection);
 clientSocket.on("updateUsers", updateUsers);
 clientSocket.on("message-request", sendMessage);
 clientSocket.on("broadcast-message", saveMessage);
+clientSocket.on("show-message",showMessage);
 
 messageForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -37,22 +39,27 @@ function updateUsers(userArray) {
     userColor = colorsArray[0];
   }
 
+  onScreenMessage = "I'm the " + role;
+
   console.log(userArray);
 }
 
 function sendMessage() {
-  if (typeof myMessage != "undefined" && myMessage != "")
+  if (typeof myMessage != "undefined" && myMessage != ""){
     console.log("sto inviando:  " + myMessage);
-  clientSocket.emit("send-chat-message", { index: index, message: myMessage });
+    clientSocket.emit("send-chat-message", { index: index, message: myMessage });
+  }
 }
 
 function saveMessage(message) {
-  if (message.index != index) {
-    console.log("messaggio salvato:  " + message.message);
-    recievedMessage = message.index + "  ha mandato:  " + message.message;
-    messageRecieved = true;
-  }
+  recievedMessage = message.message;
+  recievedMessageIndex = message.index;
 }
+
+function showMessage(){
+  onScreenMessage = "il client " + recievedMessageIndex + " ha mandato:  " +recievedMessage;
+}
+
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -64,6 +71,5 @@ function draw() {
   textSize(32);
   textAlign(CENTER);
 
-  if (messageRecieved) text(recievedMessage, width / 2, height / 2);
-  else text("I'm the " + role, width / 2, height / 2);
+  text(onScreenMessage, width / 2, height / 2);
 }

@@ -1,13 +1,11 @@
 let serverinoSocket = io();
 let index;
 let messageForm = document.getElementById("collect-container");
+let messageRecievedFlags = [false, false, false, false];
 
 serverinoSocket.on("connect", newConnection);
+serverinoSocket.on("broadcast-message", messageReady);
 //clientSocket.on("updateUsers", updateUsers);
-
-function newConnection() {
-  console.log("fake server connesso");
-}
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -22,13 +20,32 @@ function draw() {
 }
 
 let collectButtons = document.querySelectorAll(".collect");
+let deliverButtons = document.querySelectorAll(".deliver");
 
-collectButtons.forEach((element, index) => {
-  element.addEventListener("click", collect);
+collectButtons.forEach((collectButton, collectIndex) => {
+  collectButton.addEventListener("click", collect);
   function collect() {
-    //element.preventDefault();  non ricaricare la pagin
-    console.log(index);
-
-    serverinoSocket.emit("get-message", index + 1);
+      serverinoSocket.emit("get-message", collectIndex + 1);
   }
 });
+
+deliverButtons.forEach((deliverButton,deliverIndex)=>{
+  deliverButton.addEventListener('click',(button)=>{
+    deliverButton.style.display = "none";
+    serverinoSocket.emit("show-message",deliverIndex+1);
+  })
+});
+
+function newConnection() {
+  console.log("fake server connesso");
+}
+
+function messageReady(message){
+
+  deliverButtons.forEach((deliverButton, deliverIndex) => {
+    if (deliverIndex != message.index-1) {
+      deliverButton.style.display = "inline";
+    }
+  });
+  
+}
