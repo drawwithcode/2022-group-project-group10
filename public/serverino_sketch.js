@@ -1,11 +1,8 @@
 let serverinoSocket = io();
-let index;
 let messageForm = document.getElementById("collect-container");
-let messageRecievedFlags = [false, false, false, false];
 
 serverinoSocket.on("connect", newConnection);
 serverinoSocket.on("broadcast-message", messageReady);
-//clientSocket.on("updateUsers", updateUsers);
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
