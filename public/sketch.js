@@ -28,3 +28,7 @@ function enterRoom(index) {
     if(index == 0) {window.location.href = "serverino_index.html";}
     else if (index > 0 && index <=4) {window.location.href = "client_index.html";}
 }
+
+function setup() {
+    introSocket.emit("requestUserUpdate")
+}

@@ -18,6 +18,11 @@ function newConnection(newSocket) {
 
   //controlla disponibilità di posti
   newSocket.on("checkAvailability", checkAvailability)
+  
+  //manda lista aggiornata a tutti appena entrano
+  newSocket.on("requestUserUpdate", function() {
+    io.emit("updateUsers", userArray);
+  })
 
   //manda disponibilità
   function checkAvailability() { 
@@ -26,9 +31,6 @@ function newConnection(newSocket) {
       else {console.log(i + " libero"); io.to(newSocket.id).emit("placeAvailable", i)} 
     }
   }
-
-  //manda lista aggiornata a tutti appena entrano
-  //io.emit("updateUsers", userArray);
   
   //entra nella stanza e aggiorna array
   newSocket.on("enter-room", function() {

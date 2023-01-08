@@ -15,8 +15,9 @@ canvas {
   font-size: 13pt;
 }
 
+.enter-room-button {cursor: pointer;}
+
 .active {display: block;}
 .inactive {display: none;}
-.disabled {opacity: 0.5; pointer-events: none;}
+.disabled {opacity: 0.5; pointer-events: none; cursor:auto}
 
-.enter-room-button {cursor: pointer;}
