@@ -34,7 +34,7 @@ deliverButtons.forEach((deliverButton,deliverIndex)=>{
 });
 
 function newConnection() {
-  console.log("fake server connesso");
+  serverinoSocket.emit("enter-room")
 }
 
 function messageReady(message){

@@ -25,6 +25,7 @@ function newConnection(newSocket) {
         console.log(userArray);
         io.emit("updateUsers", userArray);
         break;
+        
       }
     }
   })
@@ -37,6 +38,7 @@ function newConnection(newSocket) {
       console.log(userArray);
       io.emit("updateUsers", userArray);
     }
+
   });
 
   
