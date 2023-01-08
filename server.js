@@ -16,8 +16,21 @@ let userArray = [];
 
 function newConnection(newSocket) {
 
+  //controlla disponibilità di posti
+  newSocket.on("checkAvailability", checkAvailability)
+
+  //manda disponibilità
+  function checkAvailability() { 
+    for (i = 0; i<5; i++) {
+      if(userArray[i]) {console.log(i + " occupato")} 
+      else {console.log(i + " libero"); io.to(newSocket.id).emit("placeAvailable", i)} 
+    }
+  }
+
+  //manda lista aggiornata a tutti appena entrano
   io.emit("updateUsers", userArray);
   
+  //entra nella stanza e aggiorna array
   newSocket.on("enter-room", function() {
 
     for (let i = 0; true; i++) {
@@ -31,6 +44,7 @@ function newConnection(newSocket) {
     }
   })
 
+  //esce dalla stanza stanza e aggiorna array
   newSocket.on("disconnect", function () {
   
     let index = userArray.indexOf(newSocket.id);
@@ -43,10 +57,11 @@ function newConnection(newSocket) {
 
   });
 
-  newSocket.on("send-chat-message", (message) => {
-    console.log(message);
 
-    newSocket.broadcast.emit("broadcast-message", message);
+
+  newSocket.on("send-chat-message", (user) => {
+    console.log(user.message);
+    newSocket.broadcast.emit("broadcast-message", user);
   });
 
   newSocket.on("get-message", (index) => {

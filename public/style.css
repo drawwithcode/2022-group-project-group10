@@ -18,3 +18,5 @@ canvas {
 .active {display: block;}
 .inactive {display: none;}
 .disabled {opacity: 0.5; pointer-events: none;}
+
+.enter-room-button {cursor: pointer;}
