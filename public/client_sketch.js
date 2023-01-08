@@ -33,17 +33,15 @@ function updateUsers(userArray) {
 
   index = userArray.indexOf(clientSocket.id);
   userColor = colorsArray[index]
+  console.log(userColor)
 
   if (index == 0) {
     role = "server";
     //window.location.href = "serverino_index.html";
     serverSection.classList.remove("inactive");
-    clientSection.classList.add("inactive")
-
-    userColor = colorsArray[index];
+    clientSection.classList.add("inactive");
   } else if (index <= 4) {
     role = "client n°" + index;
-
     clientSection.classList.remove("inactive")
     serverSection.classList.add("inactive");
   } else {
@@ -75,12 +73,11 @@ function showMessage(){
 function setup() {
   createCanvas(windowWidth, windowHeight);
   colorsArray = [color('#e6e6e6'), color('#ffe500'), color('#00ff6a'), color('#ff0084'), color('#00aeff')];
-  console.log(colorsArray)
 }
 
 function draw() {
-  background(userColor);
-  console.log(userColor)
+  if(userColor) {background(userColor);}
+  
 
   textSize(32);
   textAlign(CENTER);
