@@ -23,11 +23,14 @@ messageForm.addEventListener("submit", (e) => {
 });
 
 function newConnection() {
-  clientSocket.emit("enter-room", clientSocket)
+  clientSocket.emit("enter-room")
 }
 
 function updateUsers(userArray) {
+  console.log(userArray);
+
   index = userArray.indexOf(clientSocket.id);
+  console.log(index)
 
   if (index == 0) {
     role = "server";
@@ -43,7 +46,6 @@ function updateUsers(userArray) {
 
   onScreenMessage = "I'm the " + role;
 
-  console.log(userArray);
 }
 
 function sendMessage() {
