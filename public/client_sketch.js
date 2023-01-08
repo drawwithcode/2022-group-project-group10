@@ -1,8 +1,8 @@
 let clientSocket = io();
-let colorsArray = ["#e6e6e6", "#ffe500", "#00ff6a", "#ff0084", "#00aeff"];
 let role;
 let index;
-let userColor;
+let userColor = "white";
+let colorsArray;
 let messageForm = document.getElementById("send-container");
 let messageInput = document.getElementById("message-input");
 let myMessage;
@@ -30,10 +30,9 @@ function newConnection() {
 }
 
 function updateUsers(userArray) {
-  console.log(userArray);
 
   index = userArray.indexOf(clientSocket.id);
-  console.log(index)
+  userColor = colorsArray[index]
 
   if (index == 0) {
     role = "server";
@@ -44,16 +43,15 @@ function updateUsers(userArray) {
     userColor = colorsArray[index];
   } else if (index <= 4) {
     role = "client n°" + index;
-    userColor = colorsArray[index];
 
     clientSection.classList.remove("inactive")
     serverSection.classList.add("inactive");
   } else {
     role = "waiter";
-    userColor = colorsArray[0];
   }
 
   onScreenMessage = "I'm the " + role;
+
 
 }
 
@@ -76,6 +74,7 @@ function showMessage(){
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  colorsArray = [color('#e6e6e6'), color('#ffe500'), color('#00ff6a'), color('#ff0084'), color('#00aeff')];
 }
 
 function draw() {
