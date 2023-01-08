@@ -16,6 +16,8 @@ let userArray = [];
 
 function newConnection(newSocket) {
 
+  io.emit("updateUsers", userArray);
+  
   newSocket.on("enter-room", function() {
 
     for (let i = 0; true; i++) {
@@ -25,7 +27,6 @@ function newConnection(newSocket) {
         console.log(userArray);
         io.emit("updateUsers", userArray);
         break;
-
       }
     }
   })
@@ -35,13 +36,12 @@ function newConnection(newSocket) {
     let index = userArray.indexOf(newSocket.id);
     if (index > -1) {
       delete userArray[index];
+      if(userArray.length > 5) {userArray.pop()}
       console.log(userArray);
       io.emit("updateUsers", userArray);
     }
 
   });
-
-  
 
   newSocket.on("send-chat-message", (message) => {
     console.log(message);
