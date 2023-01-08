@@ -11,7 +11,6 @@ let recievedMessageIndex;
 let onScreenMessage;
 
 clientSocket.on("connect", newConnection);
-
 clientSocket.on("updateUsers", updateUsers);
 clientSocket.on("message-request", sendMessage);
 clientSocket.on("broadcast-message", saveMessage);
@@ -24,8 +23,7 @@ messageForm.addEventListener("submit", (e) => {
 });
 
 function newConnection() {
-  console.log("sono connesso")
-  clientSocket.emit("enterroom", clientSocket.id);
+  clientSocket.emit("enter-room", clientSocket)
 }
 
 function updateUsers(userArray) {

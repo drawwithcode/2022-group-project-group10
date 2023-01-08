@@ -2,33 +2,34 @@ let express = require("express");
 let app = express();
 let port = process.env.PORT || 3000;
 let server = app.listen(port);
+
 app.use(express.static("public"));
-let collectetMessage;
 
 console.log("running server on http://localhost:" + port);
 
 let serverSocket = require("socket.io");
 let io = serverSocket(server);
 
-io.on("connection", newConnection);
+io.on("enter-room", newConnection);
 
 let userArray = [];
 
 function newConnection(newSocket) {
+
   for (let i = 0; true; i++) {
+
     if (typeof userArray[i] == "undefined") {
-      userArray[i] = newSocket;
+      userArray[i] = newSocket.id;
       break;
     }
   }
 
-  console.log(userArray);
+  //console.log(userArray);
 
   newSocket.on("disconnect", function () {
-    let index = userArray.indexOf(newSocket);
+    let index = userArray.indexOf(newSocket.id);
     if (index > -1) {
       delete userArray[index];
-      //io.emit("updateUsers", userArray);
     }
   });
 
