@@ -25,7 +25,7 @@ function newConnection(newSocket) {
         console.log(userArray);
         io.emit("updateUsers", userArray);
         break;
-        
+
       }
     }
   })
@@ -43,7 +43,7 @@ function newConnection(newSocket) {
 
   
 
- /*  newSocket.on("send-chat-message", (message) => {
+  newSocket.on("send-chat-message", (message) => {
     console.log(message);
 
     newSocket.broadcast.emit("broadcast-message", message);
@@ -60,5 +60,5 @@ function newConnection(newSocket) {
 
   newSocket.on("show-message",(index)=>{
     newSocket.to(userArray[index]).emit("show-message");
-  }) */
+  })
 }
