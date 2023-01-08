@@ -10,7 +10,7 @@ console.log("running server on http://localhost:" + port);
 let serverSocket = require("socket.io");
 let io = serverSocket(server);
 
-io.on("enter-room", newConnection);
+io.on("connection", newConnection);
 
 let userArray = [];
 
@@ -19,15 +19,15 @@ function newConnection(newSocket) {
   for (let i = 0; true; i++) {
 
     if (typeof userArray[i] == "undefined") {
-      userArray[i] = newSocket.id;
+      userArray[i] = newSocket;
       break;
     }
   }
 
-  //console.log(userArray);
+  console.log(userArray);
 
   newSocket.on("disconnect", function () {
-    let index = userArray.indexOf(newSocket.id);
+    let index = userArray.indexOf(newSocket);
     if (index > -1) {
       delete userArray[index];
     }
