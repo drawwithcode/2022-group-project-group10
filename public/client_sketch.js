@@ -10,6 +10,9 @@ let recievedMessage;
 let recievedMessageIndex;
 let onScreenMessage;
 
+let serverSection = document.querySelector(".server")
+let clientSection = document.querySelector(".client")
+
 clientSocket.on("connect", newConnection);
 clientSocket.on("updateUsers", updateUsers);
 clientSocket.on("message-request", sendMessage);
@@ -34,11 +37,17 @@ function updateUsers(userArray) {
 
   if (index == 0) {
     role = "server";
-    window.location.href = "serverino_index.html";
+    //window.location.href = "serverino_index.html";
+    serverSection.classList.remove("inactive");
+    clientSection.classList.add("inactive")
+
     userColor = colorsArray[index];
   } else if (index <= 4) {
     role = "client n°" + index;
     userColor = colorsArray[index];
+
+    clientSection.classList.remove("inactive")
+    serverSection.classList.add("inactive");
   } else {
     role = "waiter";
     userColor = colorsArray[0];
@@ -70,7 +79,7 @@ function setup() {
 }
 
 function draw() {
-  background("yellow");
+  background(userColor);
 
   textSize(32);
   textAlign(CENTER);

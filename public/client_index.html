@@ -13,10 +13,36 @@
   </head>
 
   <body>
-    <form id="send-container">
-      <input type="text" id="message-input" />
-      <button type="submit" id="send-button">send</button>
-    </form>
+
+    <div class="client inactive">
+      <form id="send-container">
+        <input type="text" id="message-input" />
+        <button type="submit" id="send-button">send</button>
+      </form>
+    </div>
+
+    <div class="server inactive">
+        <div id="collect-container">
+          <button type="click" id="collect1" class="collect">collect1</button>
+          <button type="click" id="collect2" class="collect">collect2</button>
+          <button type="click" id="collect3" class="collect">collect3</button>
+          <button type="click" id="collect4" class="collect">collect4</button>
+        </div>
+        <div id="deliver container">
+          <button type="click" style="display: none" class="deliver">
+            deliver1
+          </button>
+          <button type="click" style="display: none" class="deliver">
+            deliver2
+          </button>
+          <button type="click" style="display: none" class="deliver">
+            deliver3
+          </button>
+          <button type="click" style="display: none" class="deliver">
+            deliver4
+          </button>
+        </div>
+    </div>
 
     <script src="client_sketch.js"></script>
   </body>
