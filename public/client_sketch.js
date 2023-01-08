@@ -43,10 +43,13 @@ function newConnection() {
 //assegnazione ruolo client o server
 function updateUsers(userArray) {
   
+  console.log(userArray)
+
   user.index = userArray.indexOf(clientSocket.id);
+  if (user.index ==0) {window.location.href = "serverino_index.html";} //se uno entra dalla pagina del client quando il posto è libero, diventa server
+  if (user.index > 4) {window.location.href = "index.html";}
   user.c = colorsArray[user.index]
   user.role = "client"
-  
   onScreenMessage = "I'm the " + user.role;
 
 }

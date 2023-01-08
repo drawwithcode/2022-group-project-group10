@@ -22,13 +22,13 @@ function newConnection(newSocket) {
   //manda disponibilità
   function checkAvailability() { 
     for (i = 0; i<5; i++) {
-      if(userArray[i]) {console.log(i + " occupato")} 
+      if(userArray[i]) {console.log(i + " occupato");} 
       else {console.log(i + " libero"); io.to(newSocket.id).emit("placeAvailable", i)} 
     }
   }
 
   //manda lista aggiornata a tutti appena entrano
-  io.emit("updateUsers", userArray);
+  //io.emit("updateUsers", userArray);
   
   //entra nella stanza e aggiorna array
   newSocket.on("enter-room", function() {

@@ -1,19 +1,41 @@
 let serverinoSocket = io();
 let messageForm = document.getElementById("collect-container");
 
+//oggetto utente che contiene ruolo, index, colore e messaggio che vuole mandare
+//inizialmente vuoto, poi viene definito con updateUsers
+const user = {
+  role: "",
+  index: "",
+  c: "",
+}
+
+
+serverinoSocket.on("updateUsers", updateUsers);
 serverinoSocket.on("connect", newConnection);
 serverinoSocket.on("broadcast-message", messageReady);
+
+
+function updateUsers(userArray) {
+  
+  console.log(userArray)
+  if (userArray[0] !== serverinoSocket.id) {window.location.href = "index.html";}
+
+  user.index = userArray.indexOf(serverinoSocket.id);
+  user.c = "#e6e6e6"
+  user.role = "server"
+
+}
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
 }
 
 function draw() {
-  background("#e6e6e6");
+  background(user.c);
 
   textSize(32);
   textAlign(CENTER);
-  text("I'm the server", width / 2, height / 2);
+  text("I'm the " + user.role, width / 2, height / 2);
 }
 
 let collectButtons = document.querySelectorAll(".collect");
@@ -34,7 +56,7 @@ deliverButtons.forEach((deliverButton,deliverIndex)=>{
 });
 
 function newConnection() {
-  serverinoSocket.emit("enter-room")
+  serverinoSocket.emit("enter-room");
 }
 
 function messageReady(message){
