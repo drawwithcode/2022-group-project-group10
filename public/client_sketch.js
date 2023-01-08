@@ -75,10 +75,12 @@ function showMessage(){
 function setup() {
   createCanvas(windowWidth, windowHeight);
   colorsArray = [color('#e6e6e6'), color('#ffe500'), color('#00ff6a'), color('#ff0084'), color('#00aeff')];
+  console.log(colorsArray)
 }
 
 function draw() {
   background(userColor);
+  console.log(userColor)
 
   textSize(32);
   textAlign(CENTER);
