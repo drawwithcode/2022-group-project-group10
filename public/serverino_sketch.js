@@ -51,7 +51,7 @@ collectButtons.forEach((collectButton, collectIndex) => {
 deliverButtons.forEach((deliverButton,deliverIndex)=>{
   deliverButton.addEventListener('click',(button)=>{
     deliverButton.style.display = "none";
-    serverinoSocket.emit("show-message",deliverIndex+1);
+    serverinoSocket.emit("show-message", deliverIndex+1);
   })
 });
 

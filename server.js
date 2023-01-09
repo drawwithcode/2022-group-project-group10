@@ -13,8 +13,13 @@ let io = serverSocket(server);
 io.on("connection", newConnection);
 
 let userArray = [];
+let messageSent = [undefined, undefined, undefined, undefined]
+let globalChat;
 
 function newConnection(newSocket) {
+
+  //global chat entra
+  newSocket.on("chatConnected", function(chatId) {globalChat = chatId; io.emit("chat connected") ;console.log("nuova chat globale: " + chatId)})
 
   //controlla disponibilità di posti
   newSocket.on("checkAvailability", checkAvailability)
@@ -22,6 +27,7 @@ function newConnection(newSocket) {
   //manda lista aggiornata a tutti appena entrano
   newSocket.on("requestUserUpdate", function() {
     io.emit("updateUsers", userArray);
+    if(globalChat) {io.emit("chat connected")}
   })
 
   //manda disponibilità
@@ -36,7 +42,6 @@ function newConnection(newSocket) {
   newSocket.on("enter-room", function() {
 
     for (let i = 0; true; i++) {
-
       if (typeof userArray[i] == "undefined") {
         userArray[i] = newSocket.id;
         console.log(userArray);
@@ -46,8 +51,10 @@ function newConnection(newSocket) {
     }
   })
 
-  //esce dalla stanza stanza e aggiorna array
+  //esce dalla stanza stanza e aggiorna array e chat
   newSocket.on("disconnect", function () {
+
+    if(newSocket.id == globalChat) {console.log("chat disconnected"); globalChat = undefined; io.emit("chat disconnected");}
   
     let index = userArray.indexOf(newSocket.id);
     if (index > -1) {
@@ -59,11 +66,11 @@ function newConnection(newSocket) {
 
   });
 
-
-
   newSocket.on("send-chat-message", (user) => {
     console.log(user.message);
     newSocket.broadcast.emit("broadcast-message", user);
+    index = userArray.indexOf(newSocket.id)
+    messageSent[index-1] = "sent"
   });
 
   newSocket.on("get-message", (index) => {
@@ -77,5 +84,12 @@ function newConnection(newSocket) {
 
   newSocket.on("show-message",(index)=>{
     newSocket.to(userArray[index]).emit("show-message");
+    messageSent[index-1] = "sent"
+    console.log(messageSent)
+    for(i = 1; i < userArray.length; i++) {
+      let checkMessageSent;
+      if (userArray[i] && messageSent[i-1]) {}
+    }
+    newSocket.to(globalChat).emit("show-message");
   })
 }
