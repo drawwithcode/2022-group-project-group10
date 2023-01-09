@@ -19,6 +19,7 @@ body {
   font-family: Helvetica, sans-serif;
   font-weight: bold;
   color: var(--nero);
+  overflow: hidden;
 }
 
 canvas {
@@ -67,7 +68,7 @@ a {
 }
 
 .box {
-  width: 99%;
+  width: 100%;
   font-size: 30pt;
   line-height: 32pt;
   padding: 0.5%;
@@ -85,7 +86,7 @@ a {
 
 .chat-container {
   height: 100%;
-  overflow: scroll;
+  /* overflow: scroll; */
 }
 
 
@@ -115,6 +116,11 @@ a {
 
 #message-input {
   border: none;
+  background-color: rgba(0,0,0,0);
+}
+
+input:focus, textarea:focus, select:focus{
+  outline: none;
 }
 
 
