@@ -14,7 +14,16 @@ let canvas
 function setup() {
   canvas =createCanvas(windowWidth,windowHeight)
 
-  capture = createCapture(VIDEO); //capture the webcam
+  var constrains = {
+    audio: false,
+    video: {
+      facingMode: {
+        exact: "environment"
+      }
+    }
+  }
+
+  capture = createCapture(constrains); //capture the webcam
   capture.position(0,0) //move the capture to the top left
   capture.style('opacity',0.5)// use this to hide the capture later on (change to 0 to hide)...
   capture.id("myVideo"); //give the capture an ID so we can use it in the tracker below.
