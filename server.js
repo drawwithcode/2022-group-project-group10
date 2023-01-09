@@ -92,7 +92,7 @@ function newConnection(newSocket) {
      
     for(i = 1; i < userArray.length; i++) {
       if ((userArray[i] && messageSent[i-1] == "sent") || userArray[i] == undefined ) {readyForChat[i-1] = true}
-      else(readyForChat[i-1] = true)
+      else(readyForChat[i-1] = false)
     }
     
     console.log(readyForChat)
