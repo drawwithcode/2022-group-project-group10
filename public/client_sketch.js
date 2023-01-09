@@ -1,8 +1,10 @@
 let clientSocket = io();
 let colorsArray;
+let frequencyArray = [100, 300, 500, 700, 900];
 
 let recievedMessage;
 let recievedMessageIndex;
+let osc, playing, amp;
 
 let messageForm = document.getElementById("send-container");
 let messageInput = document.getElementById("message-input");
@@ -38,6 +40,7 @@ const user = {
   index: "",
   c: "",
   message: "",
+  freq: ""
 }
 
 clientSocket.on("connect", newConnection);
@@ -51,6 +54,7 @@ sendButton.addEventListener("click", function() {
   user.message = messageInput.value;
   messageInput.value = ""
   console.log(user.message)
+  osc.start();
 })
 
 
@@ -68,6 +72,10 @@ function updateUsers(userArray) {
   if (user.index ==0) {window.location.href = "serverino_index.html";} //se uno entra dalla pagina del client quando il posto è libero, diventa server
   if (user.index > 4) {window.location.href = "index.html";}
   user.c = colorsArray[user.index]
+  user.freq = frequencyArray[user.index]
+  osc = new p5.Oscillator("sawtooth");
+  osc.freq(user.freq, 0.1);
+  console.log(user.freq)
   user.role = "client"
 }
 

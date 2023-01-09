@@ -1,5 +1,6 @@
 let serverinoSocket = io();
 let messageForm = document.getElementById("collect-container");
+let mic;
 
 //oggetto utente che contiene ruolo, index, colore e messaggio che vuole mandare
 //inizialmente vuoto, poi viene definito con updateUsers
@@ -7,6 +8,7 @@ const user = {
   role: "",
   index: "",
   c: "",
+  freq: ""
 }
 
 
@@ -28,6 +30,9 @@ function updateUsers(userArray) {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  mic = new p5.AudioIn();
+  mic.start();
+  console.log(mic)
 }
 
 function draw() {
