@@ -1,6 +1,7 @@
 let introSocket = io();
 
 let enterRoomButton = document.querySelector(".enter-room-button")
+let chatButton = document.querySelector(".access-chat")
 
 introSocket.on("updateUsers", updateEnterButton)
 
@@ -27,6 +28,18 @@ introSocket.on("placeAvailable", enterRoom)
 function enterRoom(index) {
     if(index == 0) {window.location.href = "serverino_index.html";}
     else if (index > 0 && index <=4) {window.location.href = "client_index.html";}
+}
+
+
+introSocket.on("chat connected", chatConnected)
+introSocket.on("chat disconnected", chatDisconnected)
+
+function chatConnected() {
+    chatButton.classList.add("inactive")
+}
+
+function chatDisconnected() {
+    chatButton.classList.remove("inactive")
 }
 
 function setup() {
