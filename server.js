@@ -91,7 +91,8 @@ function newConnection(newSocket) {
     let readyForChat = [false, false, false, false];
      
     for(i = 1; i < userArray.length; i++) {
-      if ((userArray[i] && messageSent[i-1] == "sent") || (userArray[i] == undefined && messageSent[i-1] == undefined) ) {readyForChat[i-1] = true}
+      if ((userArray[i] && messageSent[i-1] == "sent") || userArray[i] == undefined ) {readyForChat[i-1] = true}
+      else(readyForChat[i-1] = true)
     }
     
     console.log(readyForChat)
