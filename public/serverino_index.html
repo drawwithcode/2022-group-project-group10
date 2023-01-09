@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Sketch</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
+    <script src="libraries/p5.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+
+  <body>
+    <div id="collect-container">
+      <button type="click" id="collect1" class="collect">collect1</button>
+      <button type="click" id="collect2" class="collect">collect2</button>
+      <button type="click" id="collect3" class="collect">collect3</button>
+      <button type="click" id="collect4" class="collect">collect4</button>
+    </div>
+    <div id="deliver container">
+      <button type="click" style="display: none" class="deliver">
+        deliver1
+      </button>
+      <button type="click" style="display: none" class="deliver">
+        deliver2
+      </button>
+      <button type="click" style="display: none" class="deliver">
+        deliver3
+      </button>
+      <button type="click" style="display: none" class="deliver">
+        deliver4
+      </button>
+    </div>
+
+    <script src="serverino_sketch.js"></script>
+  </body>
+</html>
