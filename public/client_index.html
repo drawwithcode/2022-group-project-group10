@@ -9,7 +9,6 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
 
     <script src="libraries/p5.min.js"></script>
-    <script src="libraries/p5.sound.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
   </head>
 
@@ -23,7 +22,7 @@
     </div>
   
       <!-- SEND -->
-      <div class="send-container container active">
+      <div class="send-container container">
           <div class="box" id="ascicanvas"></div>
           <input class="box" placeholder="Write something" type="text" id="message-input" name="input">
           <div class="btn" type="submit" id="send-button">Package data</div>
@@ -37,9 +36,8 @@
       </div>
 
       <!-- COLLECT -->
-      <div class="collect-container container">
+      <div class="collect-container container active">
         <div class="camera-container"></div>
-        <h2>Collect other users messages from the server</h2>
       </div>
 
     <script src="client_sketch.js"></script>
