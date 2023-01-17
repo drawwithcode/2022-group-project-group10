@@ -129,10 +129,10 @@ let p2 = new p5(sketch);
 var capture;
 var w = window.innerWidth;
 var h = w;
-let subW = Math.round(w / 3)
-let subH = Math.round(w / 3/9*16)
+let subW = Math.round(w / 5)
+let subH = Math.round(w / 5)
 let subX = Math.round(w / 2 - subW / 2)
-let subY = Math.round(h / 2 - subH / 2)
+let subY = Math.round(h / 1.5)
 
 let ctotal = 0;
 let threshold = 15; 
@@ -156,7 +156,7 @@ p2.setup = function() {
   p2.colorMode(p2.HSL, 360, 100, 100)
   p2.pixelDensity(1);
 
-  targetColors = [{name: "green", hue: 137, saturation: 81, lightness: 65, total: 0}, {name: "purple", hue: 277, saturation: 100, lightness: 84, total: 0}, {name: "yellow", hue: 36, saturation: 81, lightness: 61, total: 0}, {name: "red", hue: 360, saturation: 80, lightness: 63, total: 0}]
+  targetColors = [{name: "green", hue: 170, saturation: 75, lightness: 43, total: 0, index: 1}, {name: "purple", hue: 280, saturation: 80, lightness: 50, total: 0, index: 2}, {name: "yellow", hue: 85, saturation: 68, lightness: 55, total: 0, index: 3}, {name: "red", hue: 340, saturation: 75, lightness: 60, total: 0, index: 4 }, {name: "blue", hue: 224, saturation: 100, lightness: 50, total: 0}]
   
   capture = p2.createCapture({
       audio: false,
@@ -185,9 +185,10 @@ p2.draw = function() {
 
   targetColors.forEach(function(color) {color.total = 0}) //resets total
 
-  p2.image(capture, 0, 0)
+  p2.image(capture, 0, 0, w, h)
   p2.noFill()
-  p2.rect(subX-1, subY-1, subW+2, subH+2)
+  p2.rectMode(p2.CENTER)
+  
 
   avgHueArray = [];
   avgSatArray = [];
@@ -227,7 +228,7 @@ p2.draw = function() {
         if(hue < 20 && satDiff < 25 && briDiff < 25) {
           targetColors[3].total ++
         }
-        else if (hueDiff < 30 && satDiff < 25 && briDiff < 25) {
+        else if (hueDiff < 25 && satDiff < 30 && briDiff < 20) {
           color.total ++ 
         }
       }) 
@@ -240,7 +241,7 @@ p2.draw = function() {
 
   targetColors.forEach(function(color) {
     let ratio = 100 * color.total / (subW * subH)
-    if (ratio >= 70) {colorFound = "HO TROVATO: " + color.name}
+    if (ratio >= 70) {colorFound = "HO TROVATO: " + color.name; /* collectMessage(color.index +1) */}
   })
   
   p2.textAlign(p2.CENTER)
@@ -315,7 +316,7 @@ function findAverageColor() {
   let avgLig = totalLig / avgLigArray.length
   
 
-  p2.textAlign(p2.LEFT)
+  p2.textAlign(p2.LEFFT)
   p2.textSize(16)
 
   p2.fill("black")
@@ -328,7 +329,10 @@ function findAverageColor() {
   p2.rect(10, w + 50, p2.map(avgHue, 0, 360, 0, p2.width-50), 30)
   p2.rect(10, w + 150, p2.map(avgSat, 0, 100, 0, p2.width-50), 30)
   p2.rect(10, w + 250, p2.map(avgLig, 0, 100, 0, p2.width-50), 30)
-  //p2.rect(subX-1, subY-1, subW+2, subH+2)
+  p2.rect(w/2, h/1.5, subW+2, subH+2)
+  p2.noFill()
+  p2.rect(w/2, h/2, h*0.9*9/18, h*0.9, 20)
+  
 
   p2.fill("black")
   p2.text(p2.round(avgHue), p2.map(avgHue, 0, 360, 0, p2.width-50) + 20, w+50+15)
