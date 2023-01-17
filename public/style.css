@@ -2,10 +2,10 @@
 
 :root {
   /* Palette */
-  --verde: #5fee87;
-  --rosa: #dfabff;
-  --arancio: #ecac4c;
-  --rosso: #ec5555;
+  --verde: hsl(137, 81%, 65%);
+  --rosa: hsl(277, 100%, 84%);
+  --arancio: hsl(36, 81%, 61%);
+  --rosso: hsl(0, 80%, 63%);
   --grigiochiaro: #cdcdcd;
   --grigiomedio: #b7b6b6;
   --grigioscuro: #929292;
