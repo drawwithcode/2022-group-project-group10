@@ -20,6 +20,7 @@ body {
   font-weight: bold;
   color: var(--nero);
   overflow: hidden;
+  background-color: var(--grigiomedio);
 }
 
 canvas {
@@ -37,6 +38,21 @@ canvas {
   text-align: center;
   display: flex;
   position: fixed;
+}
+
+.bottomnav {
+  width: 100%;
+  height: 33px;
+  font-size: 16pt;
+  line-height: 1.5;
+  display: inline-block;
+  vertical-align: middle;
+  background-color: var(--grigiochiaro);
+  text-align: center;
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  margin: none;
 }
 
 .btn {
@@ -61,44 +77,25 @@ a {
   cursor: pointer;
 }
 
-
 /**********Slideshow**********/
 
-* {box-sizing: border-box}
-
 /* Slideshow container */
-.slideshow-container {
-  position: relative;
-  background: #ffffff;
-}
 
 /* Slides */
-.mySlides {
-  display: none;
-  padding: 200px 0;
-  text-align: center;
-  /* border: 3px solid green; */
-  margin-left: 33px;
-  margin-right: 33px;
-  margin-top: 33px;
-  margin-bottom: 66px;
-  height: 70vh;
-  }
-  
+
 /* Next & previous buttons */
 .prev {
   cursor: pointer;
   position: absolute;
   width: auto;
-  color: #888;
+  color: var(--nero);
+  background-color: var(--grigiochiaro);
   font-weight: bold;
   font-size: 20px;
   border-radius: 0 3px 3px 0;
   user-select: none;
   left: 33px;
   margin-bottom: 66px;
-
-
 }
 
 /* Position the "next button" to the right */
@@ -106,28 +103,21 @@ a {
   cursor: pointer;
   position: absolute;
   width: auto;
-  color: #888;
+  color: var(--nero);
   font-weight: bold;
   font-size: 20px;
   border-radius: 0 3px 3px 0;
   user-select: none;
   right: 33px;
   margin-bottom: 5vh;
-
 }
 
 /* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
-  color: white;
+.prev:hover,
+.next:hover {
 }
-
 
 /**********CHAT**********/
-
-.navbtn.active {
-  background-color: var(--grigioscuro);
-}
 
 .box {
   width: 100%;
@@ -136,6 +126,7 @@ a {
   padding: 0.5%;
   font-weight: bold;
   color: var(--nero);
+  background-color: var(--grigiomedio);
 }
 
 .container {
@@ -150,8 +141,6 @@ a {
   height: 100%;
   /* overflow: scroll; */
 }
-
-
 
 .client1 {
   background-color: var(--verde);
@@ -178,27 +167,34 @@ a {
 
 #message-input {
   border: none;
-  background-color: rgba(0,0,0,0);
+  background-color: rgba(0, 0, 0, 0);
 }
 
-input:focus, textarea:focus, select:focus{
+input:focus,
+textarea:focus,
+select:focus {
   outline: none;
 }
-
 
 canvas {
   display: block;
 }
 
 #myTopnav {
-  width:100%;
-  height:33px;
+  width: 100%;
+  height: 33px;
   font-size: 13pt;
 }
 
-.enter-room-button {cursor: pointer;}
-
-.active {display: block;}
-.inactive {display: none;}
-.disabled {opacity: 0.5; pointer-events: none; cursor:auto}
-
+.enter-room-button {
+  position: absolute;
+  width: auto;
+  color: var(--nero);
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  right: 33px;
+  margin-bottom: 5vh;
+  display: none;
+}
