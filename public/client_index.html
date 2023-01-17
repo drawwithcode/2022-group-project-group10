@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Room</title>
+    <title>Client</title>
 
     <link rel="stylesheet" type="text/css" href="style.css" />
 
@@ -22,7 +22,7 @@
     </div>
   
       <!-- SEND -->
-      <div class="send-container container active">
+      <div class="send-container container">
           <div class="box" id="ascicanvas"></div>
           <input class="box" placeholder="Write something" type="text" id="message-input" name="input">
           <div class="btn" type="submit" id="send-button">Package data</div>
@@ -33,6 +33,11 @@
         <div class="messages-container">
           
         </div>
+      </div>
+
+      <!-- COLLECT -->
+      <div class="collect-container container active">
+        <div class="camera-container"></div>
       </div>
 
     <script src="client_sketch.js"></script>

@@ -85,11 +85,25 @@ function newConnection(newSocket) {
   newSocket.on("show-message",(index)=>{
     newSocket.to(userArray[index]).emit("show-message");
     messageSent[index-1] = "sent"
+    console.log(userArray)
     console.log(messageSent)
+
+    let readyForChat = [false, false, false, false];
+     
     for(i = 1; i < userArray.length; i++) {
-      let checkMessageSent;
-      if (userArray[i] && messageSent[i-1]) {}
+      if ((userArray[i] && messageSent[i-1] == "sent") || userArray[i] == undefined ) {readyForChat[i-1] = true}
+      else(readyForChat[i-1] = false)
     }
-    newSocket.to(globalChat).emit("show-message");
+    
+    console.log(readyForChat)
+
+    let ready = readyForChat.every(function(e) {
+      return e == true
+    })
+
+    console.log(ready)
+
+    if (ready == true) {newSocket.to(globalChat).emit("show-message")}
+    
   })
 }

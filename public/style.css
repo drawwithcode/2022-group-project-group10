@@ -2,10 +2,10 @@
 
 :root {
   /* Palette */
-  --verde: #5fee87;
-  --rosa: #dfabff;
-  --arancio: #ecac4c;
-  --rosso: #ec5555;
+  --verde: hsl(137, 81%, 65%);
+  --rosa: hsl(277, 100%, 84%);
+  --arancio: hsl(36, 81%, 61%);
+  --rosso: hsl(0, 80%, 63%);
   --grigiochiaro: #cdcdcd;
   --grigiomedio: #b7b6b6;
   --grigioscuro: #929292;
@@ -19,6 +19,7 @@ body {
   font-family: Helvetica, sans-serif;
   font-weight: bold;
   color: var(--nero);
+  overflow: hidden;
 }
 
 canvas {
@@ -60,6 +61,68 @@ a {
   cursor: pointer;
 }
 
+
+/**********Slideshow**********/
+
+* {box-sizing: border-box}
+
+/* Slideshow container */
+.slideshow-container {
+  position: relative;
+  background: #ffffff;
+}
+
+/* Slides */
+.mySlides {
+  display: none;
+  padding: 200px 0;
+  text-align: center;
+  /* border: 3px solid green; */
+  margin-left: 33px;
+  margin-right: 33px;
+  margin-top: 33px;
+  margin-bottom: 66px;
+  height: 70vh;
+  }
+  
+/* Next & previous buttons */
+.prev {
+  cursor: pointer;
+  position: absolute;
+  width: auto;
+  color: #888;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  left: 33px;
+  margin-bottom: 66px;
+
+
+}
+
+/* Position the "next button" to the right */
+.next {
+  cursor: pointer;
+  position: absolute;
+  width: auto;
+  color: #888;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  right: 33px;
+  margin-bottom: 5vh;
+
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+  color: white;
+}
+
+
 /**********CHAT**********/
 
 .navbtn.active {
@@ -67,7 +130,7 @@ a {
 }
 
 .box {
-  width: 99%;
+  width: 100%;
   font-size: 30pt;
   line-height: 32pt;
   padding: 0.5%;
@@ -85,7 +148,7 @@ a {
 
 .chat-container {
   height: 100%;
-  overflow: scroll;
+  /* overflow: scroll; */
 }
 
 
@@ -115,6 +178,11 @@ a {
 
 #message-input {
   border: none;
+  background-color: rgba(0,0,0,0);
+}
+
+input:focus, textarea:focus, select:focus{
+  outline: none;
 }
 
 
