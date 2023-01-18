@@ -38,6 +38,21 @@ canvas {
   position: fixed;
 }
 
+.bottomnav {
+  width: 100%;
+  height: 33px;
+  font-size: 16pt;
+  line-height: 1.5;
+  display: inline-block;
+  vertical-align: middle;
+  background-color: var(--grigiochiaro);
+  text-align: center;
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  margin: none;
+}
+
 .btn {
   width: 100%;
   height: 33px;
@@ -60,6 +75,34 @@ a {
   cursor: pointer;
 }
 
+/**********Slideshow**********/
+/* Next & previous buttons */
+.prev {
+  cursor: pointer;
+  position: absolute;
+  width: auto;
+  color: var(--nero);
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  left: 5vh;
+  margin-bottom: 5vh;
+}
+/* Position the "next button" to the right */
+.next {
+  cursor: pointer;
+  position: absolute;
+  width: auto;
+  color: var(--nero);
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  right: 5vh;
+  margin-bottom: 5vh;
+}
+
 /**********CHAT**********/
 
 .navbtn.active {
@@ -67,12 +110,13 @@ a {
 }
 
 .box {
-  width: 99%;
+  width: 100%;
   font-size: 30pt;
   line-height: 32pt;
-  padding: 0.5%;
+  /* padding: 0.5%; */
   font-weight: bold;
   color: var(--nero);
+  /* background-color: var(--grigiomedio); */
 }
 
 .container {
@@ -85,7 +129,7 @@ a {
 
 .chat-container {
   height: 100%;
-  overflow: scroll;
+  /* overflow: scroll; */
 }
 
 .client1 {
@@ -111,8 +155,20 @@ a {
   height: 60vh;
 }
 
+#scan-text {
+  vertical-align: text-bottom;
+  bottom: 9px;
+  height: 66px;
+  text-align: left;
+  padding: 0.5%;
+  font-size: 16pt;
+  line-height: 1;
+  position: fixed;
+}
+
 #message-input {
   border: none;
+  background-color: rgba(0, 0, 0, 0);
 }
 
 canvas {
@@ -126,7 +182,14 @@ canvas {
 }
 
 .enter-room-button {
-  cursor: pointer;
+  position: absolute;
+  width: auto;
+  color: var(--nero);
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  right: 5vh;
+  margin-bottom: 5vh;
 }
 
 .active {

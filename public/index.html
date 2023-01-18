@@ -13,13 +13,85 @@
   </head>
 
   <body>
-    BENVENUTO!
-    <a href="globalChat_index.html" style="display: none" id="lim-enter"
-      ><button>SONO LA LIM</button></a
-    >
-    <a class="enter-room-button">PARTECIPA</a>
-    <a class="access-chat" href="globalChat_index.html"> SONO LA CHAT </a>
+    <!--
+    <a href="globalChat_index.html" style="display: none" id="lim-enter"><button>SONO LA LIM</button></a>
+ <a class="access-chat" href="globalChat_index.html"> SONO LA CHAT </a>
+    <a href="Scanner.html"> SCANNER </a>-->
+
+    <div class="box" style="padding: 0.5%">
+      <div class="mySlides">This is a Client-server simulator</div>
+
+      <div class="mySlides">
+        Clients are the computers that users use to communicate with each other
+        through the server.
+      </div>
+
+      <div class="mySlides">
+        The server is the computer the brings the message from a client to one
+        other.
+      </div>
+
+      <div class="mySlides">
+        The first client packages up his message and asks the server to take it.
+        The second client asks the server to receive it and so on.
+      </div>
+
+      <div class="mySlides">
+        There are two to four clients and only one server. <br />
+        Arrange yourself according to the colors on the floor.
+      </div>
+    </div>
+
+    <div class="bottomnav">
+      <a class="prev" onclick="plusSlides(-1)">Previous</a>
+      <a class="next" onclick="plusSlides(1)">Next</a>
+      <a class="enter-room-button">Join</a>
+    </div>
 
     <script src="sketch.js"></script>
+    <script>
+      var slideIndex = 1;
+      showSlides(slideIndex);
+
+      function plusSlides(n) {
+        showSlides((slideIndex += n));
+      }
+
+      function currentSlide(n) {
+        showSlides((slideIndex = n));
+      }
+
+      function showSlides(n) {
+        var i;
+        let ButtonSx = document.getElementsByClassName("prev");
+        let ButtonDx = document.getElementsByClassName("next");
+        let slides = document.getElementsByClassName("mySlides");
+        let join = document.getElementsByClassName("enter-room-button");
+
+        if (n < 1) {
+          slideIndex = 1;
+        }
+
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+
+        console.log(slideIndex);
+        slides[slideIndex - 1].style.display = "block";
+
+        if (n == 1) {
+          ButtonSx[0].style.display = "none";
+        } else if (n > 1) {
+          ButtonSx[0].style.display = "block";
+        }
+        if (n == 5) {
+          ButtonDx[0].style.display = "none";
+          join[0].style.display = "block";
+        } else if (n < 5) {
+          ButtonDx[0].style.display = "block";
+          join[0].style.display = "none";
+        }
+      }
+    </script>
   </body>
 </html>
