@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Client</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
+    <script src="libraries/p5.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+
+  <body>
+    <div class="topnav">
+      <div class="navbtn active" id="send">Send</div>
+      <div class="navbtn" id="collect">Collect</div>
+      <div class="navbtn" id="chat">Chat</div>
+      <a href="index.html" class="navbtn" id="exit"> Exit </a>
+    </div>
+
+    <!-- SEND -->
+    <div class="send-container container active">
+      <div class="box" id="ascicanvas"></div>
+      <input
+        class="box"
+        placeholder="Write something"
+        type="text"
+        id="message-input"
+        name="input"
+      />
+      <div class="btn" type="submit" id="send-button">Package data</div>
+    </div>
+
+    <!-- COLLECT -->
+    <div class="collect-container container">
+      <div class="camera-container"></div>
+    </div>
+
+    <!-- CHAT -->
+    <div class="chat-container container">
+      <div class="messages-container"></div>
+    </div>
+
+    <script src="client_sketch.js"></script>
+  </body>
+</html>
