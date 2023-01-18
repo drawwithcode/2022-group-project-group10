@@ -2,6 +2,7 @@ let serverinoSocket = io();
 let messageForm = document.getElementById("collect-buttons");
 let windowWidth = window.innerWidth;
 let windowHeight = window.innerHeight;
+let chat = document.querySelector(".messages-container");
 
 //Navigazione automatica che attiva e disattiva le sezioni
 let navBtn = document.querySelectorAll(".navbtn");
@@ -58,6 +59,12 @@ function messageReady(message) {
       deliverButton.style.display = "inline";
     }
   });
+
+  let div = p1.createDiv(message.message);
+  div.parent(chat);
+  let divClass = "client" + message.index;
+  div.addClass("box");
+  div.addClass(divClass);
 }
 
 let sketch = function (p) {};
@@ -226,7 +233,7 @@ p2.draw = function () {
   }
 
   //per tracking sotto di h s b
-  findAverageColor();
+  //findAverageColor();
 
   targetColors.forEach(function (color) {
     let ratio = (100 * color.total) / (subW * subH);
@@ -238,10 +245,13 @@ p2.draw = function () {
     }
   });
 
-  p2.textAlign(p2.CENTER);
-  p2.textSize(32);
-  p2.fill("white");
-  p2.text(colorFound, p2.width / 2, 50);
+  // p2.textAlign(p2.CENTER);
+  // p2.textSize(32);
+  // p2.fill("white");
+  // p2.text(colorFound, p2.width / 2, 50);
+
+  p2.noFill();
+  p2.rect(w / 2, h / 2, (h * 0.9 * 9) / 18, h * 0.9, 20);
 };
 
 function collectMessage(i) {
@@ -303,7 +313,7 @@ function findAverageColor() {
   let avgSat = totalSat / avgSatArray.length;
   let avgLig = totalLig / avgLigArray.length;
 
-  p2.textAlign(p2.LEFFT);
+  p2.textAlign(p2.LEFT);
   p2.textSize(16);
 
   p2.fill("black");

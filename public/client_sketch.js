@@ -112,11 +112,11 @@ let p1 = new p5(sketch);
 p1.setup = function () {
   p1.createCanvas(windowWidth, windowHeight);
   colorsArray = [
-    p1.color("#e6e6e6"),
-    p1.color("#5fee87"),
-    p1.color("#dfabff"),
-    p1.color("#ecac4c"),
-    p1.color("#ec5555"),
+    p1.color("#4778FF"), //blu server
+    p1.color("#5FEE87"), //verde 1
+    p1.color("#C738AF"), //viola 2
+    p1.color("#F8F00D"), //giallo 3
+    p1.color("#EC5555"), //rosso 4
   ];
 };
 
@@ -274,7 +274,7 @@ p2.draw = function () {
   }
 
   //per tracking sotto di h s b
-  findAverageColor();
+  //findAverageColor();
 
   targetColors.forEach(function (color) {
     let ratio = (100 * color.total) / (subW * subH);
@@ -293,6 +293,9 @@ p2.draw = function () {
   p2.textSize(32);
   p2.fill("white");
   p2.text(colorFound, p2.width / 2, 50);
+
+  p2.noFill();
+  p2.rect(w / 2, h / 2, (h * 0.9 * 9) / 18, h * 0.9, 20);
 };
 
 function RGBToHSL(r, g, b) {
