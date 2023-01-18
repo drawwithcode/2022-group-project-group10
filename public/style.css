@@ -19,8 +19,6 @@ body {
   font-family: Helvetica, sans-serif;
   font-weight: bold;
   color: var(--nero);
-  overflow: hidden;
-  background-color: var(--grigiomedio);
 }
 
 canvas {
@@ -38,21 +36,6 @@ canvas {
   text-align: center;
   display: flex;
   position: fixed;
-}
-
-.bottomnav {
-  width: 100%;
-  height: 33px;
-  font-size: 16pt;
-  line-height: 1.5;
-  display: inline-block;
-  vertical-align: middle;
-  background-color: var(--grigiochiaro);
-  text-align: center;
-  display: flex;
-  position: fixed;
-  bottom: 0;
-  margin: none;
 }
 
 .btn {
@@ -77,37 +60,6 @@ a {
   cursor: pointer;
 }
 
-/**********Slideshow**********/
-
-/* Next & previous buttons */
-.prev {
-  cursor: pointer;
-  position: absolute;
-  width: auto;
-  color: var(--nero);
-  background-color: var(--grigiochiaro);
-  font-weight: bold;
-  font-size: 20px;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-  left: 33px;
-  margin-bottom: 66px;
-}
-
-/* Position the "next button" to the right */
-.next {
-  cursor: pointer;
-  position: absolute;
-  width: auto;
-  color: var(--nero);
-  font-weight: bold;
-  font-size: 20px;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-  right: 33px;
-  margin-bottom: 5vh;
-}
-
 /**********CHAT**********/
 
 .navbtn.active {
@@ -115,13 +67,12 @@ a {
 }
 
 .box {
-  width: 100%;
+  width: 99%;
   font-size: 30pt;
   line-height: 32pt;
   padding: 0.5%;
   font-weight: bold;
   color: var(--nero);
-  background-color: var(--grigiomedio);
 }
 
 .container {
@@ -134,10 +85,8 @@ a {
 
 .chat-container {
   height: 100%;
-  /* overflow: scroll; */
+  overflow: scroll;
 }
-
-
 
 .client1 {
   background-color: var(--verde);
@@ -164,13 +113,6 @@ a {
 
 #message-input {
   border: none;
-  background-color: rgba(0, 0, 0, 0);
-}
-
-input:focus,
-textarea:focus,
-select:focus {
-  outline: none;
 }
 
 canvas {
@@ -178,26 +120,23 @@ canvas {
 }
 
 #myTopnav {
-  width:100%;
-  height:33px;
+  width: 100%;
+  height: 33px;
   font-size: 13pt;
 }
 
-/* .enter-room-button {cursor: pointer;} */
 .enter-room-button {
-  position: absolute;
-  width: auto;
-  color: var(--nero);
-  font-weight: bold;
-  font-size: 20px;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-  right: 33px;
-  margin-bottom: 5vh;
-  display: none;
+  cursor: pointer;
 }
 
-.active {display: block;}
-.inactive {display: none;}
-.disabled {opacity: 0.5; pointer-events: none; cursor:auto}
-
+.active {
+  display: block;
+}
+.inactive {
+  display: none;
+}
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: auto;
+}

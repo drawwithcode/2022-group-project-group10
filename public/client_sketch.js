@@ -5,6 +5,7 @@ let windowHeight = window.innerHeight;
 
 let recievedMessage;
 let recievedMessageIndex;
+let pendingServerMessage = false;
 
 let messageForm = document.getElementById("send-container");
 let messageInput = document.getElementById("message-input");
@@ -40,7 +41,6 @@ const user = {
   index: "",
   c: "",
   message: "",
-  pending: false
 };
 
 clientSocket.on("connect", newConnection);
@@ -48,12 +48,12 @@ clientSocket.on("updateUsers", updateUsers);
 
 clientSocket.on("message-request", sendMessage);
 clientSocket.on("broadcast-message", saveMessage);
-clientSocket.on("show-message", showMessage);
 
 sendButton.addEventListener("click", function () {
   user.message = messageInput.value;
   messageInput.value = "";
   console.log(user.message);
+  clientSocket.emit("pending-message", user);
 });
 
 //avvisa il server di essere entrato, in modo che possa aggiornare lo userArray e rimandarlo indietro
@@ -92,14 +92,17 @@ function sendMessage() {
 function saveMessage(user) {
   recievedMessage = user.message;
   recievedMessageIndex = user.index;
+  pendingServerMessage = true;
 }
 
 function showMessage() {
+  console.log("mostra messaggio");
   let div = p1.createDiv(recievedMessage);
   div.parent(chat);
   let divClass = "client" + recievedMessageIndex;
   div.addClass("box");
   div.addClass(divClass);
+  pendingServerMessage = false;
 }
 
 let sketch = function (p) {};
@@ -276,7 +279,13 @@ p2.draw = function () {
   targetColors.forEach(function (color) {
     let ratio = (100 * color.total) / (subW * subH);
     if (ratio >= 70) {
-      colorFound = "HO TROVATO: " + color.name; // collectMessage(color.index +1)
+      if (color.name == "blue") {
+        colorFound = "HO TROVATO: " + color.name;
+        console.log("colore trovato");
+        if (pendingServerMessage == true) {
+          showMessage();
+        }
+      }
     }
   });
 

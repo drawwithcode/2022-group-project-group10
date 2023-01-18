@@ -9,17 +9,33 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
 
     <script src="libraries/p5.min.js"></script>
-    <script src="libraries/p5.sound.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
   </head>
 
   <body>
-    <div id="collect-container">
+    <div class="topnav">
+      <div class="navbtn active" id="collect">Collect</div>
+      <div class="navbtn" id="chat">Chat</div>
+      <a href="index.html" class="navbtn" id="exit"> Exit </a>
+    </div>
+
+    <!-- COLLECT -->
+    <div class="collect-container container active">
+      <div class="camera-container"></div>
+    </div>
+
+    <!-- CHAT -->
+    <div class="chat-container container">
+      <div class="messages-container"></div>
+    </div>
+
+    <div id="collect-buttons">
       <button type="click" id="collect1" class="collect">collect1</button>
       <button type="click" id="collect2" class="collect">collect2</button>
       <button type="click" id="collect3" class="collect">collect3</button>
       <button type="click" id="collect4" class="collect">collect4</button>
     </div>
+
     <div id="deliver container">
       <button type="click" style="display: none" class="deliver">
         deliver1
