@@ -112,11 +112,6 @@ a {
   margin-bottom: 5vh;
 }
 
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover,
-.next:hover {
-}
-
 /**********CHAT**********/
 
 .box {
@@ -134,7 +129,6 @@ a {
   width: 100%;
   top: 33px;
   z-index: 1;
-  display: none;
 }
 
 .chat-container {
@@ -197,4 +191,17 @@ canvas {
   right: 33px;
   margin-bottom: 5vh;
   display: none;
+  cursor: pointer;
+}
+
+.active {
+  display: block;
+}
+.inactive {
+  display: none;
+}
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: auto;
 }

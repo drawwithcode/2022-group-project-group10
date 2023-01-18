@@ -16,7 +16,7 @@
     <!--
     <a href="globalChat_index.html" style="display: none" id="lim-enter"><button>SONO LA LIM</button></a>
  <a class="access-chat" href="globalChat_index.html"> SONO LA CHAT </a>
-    <a href="Scanner.html"> SCANNER </a>-->
+    <a href="Scanner.html"> SCANNER </a>   -->
 
     <div class="box">
       <div class="mySlides">This is a Client-server simulator</div>
@@ -47,50 +47,6 @@
       <a class="enter-room-button">Join</a>
     </div>
 
-    <!--<script src="sketch.js"></script>-->
-    <script>
-      var slideIndex = 1;
-      showSlides(slideIndex);
-
-      function plusSlides(n) {
-        showSlides((slideIndex += n));
-      }
-
-      function currentSlide(n) {
-        showSlides((slideIndex = n));
-      }
-
-      function showSlides(n) {
-        var i;
-        let ButtonSx = document.getElementsByClassName("prev");
-        let ButtonDx = document.getElementsByClassName("next");
-        let slides = document.getElementsByClassName("mySlides");
-        let join = document.getElementsByClassName("enter-room-button");
-
-        if (n < 1) {
-          slideIndex = 1;
-        }
-
-        for (i = 0; i < slides.length; i++) {
-          slides[i].style.display = "none";
-        }
-
-        console.log(slideIndex);
-        slides[slideIndex - 1].style.display = "block";
-
-        if (n == 1) {
-          ButtonSx[0].style.display = "none";
-        } else if (n > 1) {
-          ButtonSx[0].style.display = "block";
-        }
-        if (n == 5) {
-          ButtonDx[0].style.display = "none";
-          join[0].style.display = "block";
-        } else if (n < 5) {
-          ButtonDx[0].style.display = "block";
-          join[0].style.display = "none";
-        }
-      }
-    </script>
+    <script src="sketch.js"></script>
   </body>
 </html>

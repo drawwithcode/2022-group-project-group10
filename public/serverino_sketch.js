@@ -8,31 +8,29 @@ const user = {
   role: "",
   index: "",
   c: "",
-  freq: ""
-}
-
+  freq: "",
+};
 
 serverinoSocket.on("updateUsers", updateUsers);
 serverinoSocket.on("connect", newConnection);
 serverinoSocket.on("broadcast-message", messageReady);
 
-
 function updateUsers(userArray) {
-  
-  console.log(userArray)
-  if (userArray[0] !== serverinoSocket.id) {window.location.href = "index.html";}
+  console.log(userArray);
+  if (userArray[0] !== serverinoSocket.id) {
+    window.location.href = "index.html";
+  }
 
   user.index = userArray.indexOf(serverinoSocket.id);
-  user.c = "#e6e6e6"
-  user.role = "server"
-
+  user.c = "#e6e6e6";
+  user.role = "server";
 }
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   mic = new p5.AudioIn();
   mic.start();
-  console.log(mic)
+  console.log(mic);
 }
 
 function draw() {
@@ -49,27 +47,25 @@ let deliverButtons = document.querySelectorAll(".deliver");
 collectButtons.forEach((collectButton, collectIndex) => {
   collectButton.addEventListener("click", collect);
   function collect() {
-      serverinoSocket.emit("get-message", collectIndex + 1);
+    serverinoSocket.emit("get-message", collectIndex + 1);
   }
 });
 
-deliverButtons.forEach((deliverButton,deliverIndex)=>{
-  deliverButton.addEventListener('click',(button)=>{
+deliverButtons.forEach((deliverButton, deliverIndex) => {
+  deliverButton.addEventListener("click", (button) => {
     deliverButton.style.display = "none";
-    serverinoSocket.emit("show-message", deliverIndex+1);
-  })
+    serverinoSocket.emit("show-message", deliverIndex + 1);
+  });
 });
 
 function newConnection() {
   serverinoSocket.emit("enter-room");
 }
 
-function messageReady(message){
-
+function messageReady(message) {
   deliverButtons.forEach((deliverButton, deliverIndex) => {
-    if (deliverIndex != message.index-1) {
+    if (deliverIndex != message.index - 1) {
       deliverButton.style.display = "inline";
     }
   });
-  
 }
