@@ -40,6 +40,7 @@ const user = {
   index: "",
   c: "",
   message: "",
+  pending: false
 };
 
 clientSocket.on("connect", newConnection);
