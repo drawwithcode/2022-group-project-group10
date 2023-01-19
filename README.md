@@ -49,7 +49,7 @@ The other clients have to collect the package from the server and with that they
 <p align="center">
   <img src="images/place-holder.png" width="700" />
 </p>
-Funzionamento generale.   Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap  <br>
+Funzionamento generale. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap  <br>
 
 ### Welcome page
 <p align="center">
@@ -102,11 +102,11 @@ After collecting the data, the message is displayed on the chat section.
   <img src="images/place-holder.png" width="700" />
 </p>
 
-To make the client-server model more intuitive and easy to understand,we have reworked the steps that would have been handled automatically by the computer, turning them into tasks to be taken by participants
--client sends a request to the server by writing a message and packaging the data.
--server finds the packaged data in a 3D ascii form and collects it with the scanner.
--server transports the packaged data to other clients, which also collect it with their devices.
--Clients receive the response and see the message.
+To make the client-server model more intuitive and easy to understand,we have reworked the steps that would have been handled automatically by the computer, turning them into tasks to be taken by participants<br>
+-client sends a request to the server by writing a message and packaging the data.<br>
+-server finds the packaged data in a 3D ascii form and collects it with the scanner.<br>
+-server transports the packaged data to other clients, which also collect it with their devices.<br>
+-Clients receive the response and see the message.<br>
 <br>
 
 -To collect the message, the scanner relies on the color of the participant's screen and not the ASCII data package. Is a sharp way we choose to identify clients, rather than qr-code or other popular methods.
