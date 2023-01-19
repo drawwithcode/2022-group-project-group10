@@ -6,7 +6,8 @@
 ### Table of Contents
 1. [Project](#project) <br>
   1.1 [Concept](#concept) <br>
-  1.2 [Context of use and device](#context-of-use-and-device) <br>
+  1.2 [Aim](#aim) <br>
+  1.3 [Context of use and device](#context-of-use-and-device) <br>
 3. [Structure](#structure) <br>
   2.1 [Welcome page](#welcome-page) <br>
   2.2 [Client or Server](#client-or-server) <br> 
@@ -55,37 +56,44 @@ Funzionamento generale.   Lorem Ipsum is simply dummy text of the printing and t
   <img src="images/place-holder.png" width="700" />
 </p>
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap  <br>
+In the welcome page there is a short slideshow explaining how the prototype works. <br>
 
 ### Client or Server
 <p align="center">
   <img src="images/place-holder.png" width="700" />
 </p>
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap  <br>
+The participant who enters the room first will become server, the others become clients as long as there is room available <br>
 
 ### Client's send page
 <p align="center">
   <img src="images/place-holder.png" width="700" />
 </p>
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap  <br>
+Clients write and package messages while waiting for the server to pick them up <br>
 
 ### Server's collect page
 <p align="center">
   <img src="images/place-holder.png" width="700" />
 </p>
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap  <br>
-This is a page between the solo and the interactive experience: a five seconds countdown and a "tunnel of stars" lead the user to the final page.
+The Server scans the data package and collects the messages, then it takes the message to the other clients. <br>
+
+### Client's collect page
+<p align="center">
+  <img src="images/place-holder.png" width="700" />
+</p>
+
+Client’s collects the data package from the server. <br>
 
 ### Chat page
 <p align="center">
   <img src="images/place-holder.png" width="700" />
 </p>
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap  <br>
+After collecting the data, the message is displayed on the chat section.
 
+<br>
 
 ## Design challenges
 
