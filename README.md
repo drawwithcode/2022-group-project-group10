@@ -25,7 +25,8 @@
 7. [Credits](#credits) <br>
 8. [Video demo](#video-demo) <br>
 9. [Team members](#team-members) <br>
-10.[Course](#course) <br>
+10. [Course](#course) <br>
+
 
 
 ## Project
@@ -35,13 +36,9 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 Concept generale.   Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap 
 <br>
 
-Relazione con il tema.   Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap 
-t has survived not only five centuries, but also the leap
-<br>
-
 ### Aim 
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap 
+Scopo e Relazione con il tema. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap 
 t has survived not only five centuries, but also the leap
 <br>
 
