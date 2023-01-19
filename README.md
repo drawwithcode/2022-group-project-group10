@@ -221,10 +221,116 @@ On a technical level creating the final color scanner was a bit challenging. Whe
  <br>
 
 ```
-ICOLLARE CODICE QUA
-#
-#
-#
+  //per tracking sotto di h s b
+  //findAverageColor();
+
+  targetColors.forEach(function (color) {
+    let ratio = (100 * color.total) / (subW * subH);
+    if (ratio >= 70) {
+      if (color.name == "blue") {
+        colorFound = "HO TROVATO: " + color.name;
+        console.log("colore trovato");
+        if (pendingServerMessage == true) {
+          showMessage();
+        }
+      }
+    }
+  });
+
+  // p2.textAlign(p2.CENTER);
+  // p2.textSize(32);
+  // p2.fill("white");
+  // p2.text(colorFound, p2.width / 2, 50);
+
+  p2.noFill();
+  p2.rect(w / 2, h / 2, (h * 0.9 * 9) / 18, h * 0.9, 20);
+};
+
+function RGBToHSL(r, g, b) {
+  // Make r, g, and b fractions of 1
+  r /= 255;
+  g /= 255;
+  b /= 255;
+
+  // Find greatest and smallest channel values
+  let cmin = Math.min(r, g, b),
+    cmax = Math.max(r, g, b),
+    delta = cmax - cmin;
+
+  // Calculate hue
+  // No difference
+  if (delta == 0) hue = 0;
+  // Red is max
+  else if (cmax == r) hue = ((g - b) / delta) % 6;
+  // Green is max
+  else if (cmax == g) hue = (b - r) / delta + 2;
+  // Blue is max
+  else hue = (r - g) / delta + 4;
+
+  hue = Math.round(hue * 60);
+
+  // Make negative hues positive behind 360°
+  if (hue < 0) hue += 360;
+
+  // Calculate lightness
+  lightness = (cmax + cmin) / 2;
+
+  // Calculate saturation
+  saturation = delta == 0 ? 0 : delta / (1 - Math.abs(2 * lightness - 1));
+
+  // Multiply l and s by 100
+  saturation = +(saturation * 100).toFixed(1);
+  lightness = +(lightness * 100).toFixed(1);
+}
+
+function findAverageColor() {
+  let totalHue = 0;
+  let totalSat = 0;
+  let totalLig = 0;
+
+  for (let i = 0; i < avgHueArray.length; i++) {
+    totalHue += avgHueArray[i];
+    totalSat += avgSatArray[i];
+    totalLig += avgLigArray[i];
+  }
+
+  let avgHue = totalHue / avgHueArray.length;
+  let avgSat = totalSat / avgSatArray.length;
+  let avgLig = totalLig / avgLigArray.length;
+
+  p2.textAlign(p2.LEFFT);
+  p2.textSize(16);
+
+  p2.fill("black");
+  p2.text("hue", 10, w + 30);
+  p2.text("saturation", 10, w + 130);
+  p2.text("brightness", 10, w + 230);
+
+  p2.colorMode(p2.HSL, 360, 100, 100);
+  p2.fill(avgHue, avgSat, avgLig);
+  p2.rect(10, w + 50, p2.map(avgHue, 0, 360, 0, p2.width - 50), 30);
+  p2.rect(10, w + 150, p2.map(avgSat, 0, 100, 0, p2.width - 50), 30);
+  p2.rect(10, w + 250, p2.map(avgLig, 0, 100, 0, p2.width - 50), 30);
+  p2.rect(w / 2, h / 1.5, subW + 2, subH + 2);
+  p2.noFill();
+  p2.rect(w / 2, h / 2, (h * 0.9 * 9) / 18, h * 0.9, 20);
+
+  p2.fill("black");
+  p2.text(
+    p2.round(avgHue),
+    p2.map(avgHue, 0, 360, 0, p2.width - 50) + 20,
+    w + 50 + 15
+  );
+  p2.text(
+    p2.round(avgSat),
+    p2.map(avgSat, 0, 100, 0, p2.width - 50) + 20,
+    w + 150 + 15
+  );
+  p2.text(
+    p2.round(avgLig),
+    p2.map(avgLig, 0, 100, 0, p2.width - 50) + 20,
+    w + 250 + 15
+  );
 ```
 
 ### ASCII 3d shape 
@@ -233,9 +339,60 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 
 ```
 ICOLLARE CODICE QUA
-#
-#
-#
+function getmydata() {
+  myMessage = document.getElementById("message-input").value;
+  console.log("lettere: " + myMessage.length);
+  nParole = myMessage.split(" ").length;
+  let facce = Math.round(map_range(nParole, 1, 10, 0, 5));
+  console.log("parole: " + nParole);
+
+  radiusArr.push(myMessage.length * 10);
+  radius = radiusArr[radiusArr.length - 1];
+  let raggio = Math.round(map_range(myMessage.length, 0, 140, 120, 600));
+
+  sphere = new THREE.Mesh(
+    new THREE.TetrahedronGeometry(raggio, facce),
+    new THREE.MeshPhongMaterial({ color: "green", flatShading: true })
+  );
+  sphere.name = "sphere";
+  sphere.receiveShadow = true;
+  sphere.castShadow = true;
+  scene.add(sphere);
+
+  if (radius < radiusArr[radiusArr.length - 2]) {
+    a += 1;
+
+    document
+      .getElementById("ascicanvas")
+      .removeChild(effect[a - 1].domElement);
+    init();
+
+    sphere = new THREE.Mesh(
+      new THREE.TetrahedronGeometry(raggio, facce),
+      new THREE.MeshPhongMaterial({ color: "green", flatShading: true })
+    );
+    sphere.name = "sphere";
+    sphere.castShadow = true;
+    scene.add(sphere);
+  }
+  console.log(sphere.position);
+  console.log(camera.position);
+}
+
+init();
+animate();
+
+function map_range(value, low1, high1, low2, high2) {
+  return low2 + ((high2 - low2) * (value - low1)) / (high1 - low1);
+}
+
+function init() {
+  camera = new THREE.PerspectiveCamera(
+    100,
+    window.innerWidth / window.innerHeight,
+    1,
+    1000
+  );
 ```
 
 ## Credits
