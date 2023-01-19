@@ -107,75 +107,59 @@ let directionalLight1;
 let directionalLight2;
 let a = 0;
 let facceStart = 5;
-let raggioStart = 400;
+let raggioStart = 420;
  
 init()
 sphere = new THREE.Mesh(
-     new THREE.TetrahedronGeometry(raggioStart, facceStart),
-     new THREE.MeshPhongMaterial({ color: "green", flatShading: true })
-     );
-     sphere.name = "sphere";
-     sphere.receiveShadow = true;
-     sphere.castShadow = true;
-     scene.add(sphere);
+new THREE.TetrahedronGeometry(raggioStart, facceStart),
+new THREE.MeshPhongMaterial({ color: "green", flatShading: true }));
+sphere.name = "sphere";
+scene.add(sphere);
 
 
 function animazioneStart() {
-  console.log("AAA");
   a += 1;
 
-    facceStart -= 1;
-    raggioStart -= 100;
+  facceStart -= 1;
+  raggioStart -= 50;
 
-        document.getElementById("ascicanvas1").removeChild(effect[a - 1].domElement);
-    init();
+  document.getElementById("ascicanvas1").removeChild(effect[a - 1].domElement);
+  init();
     
-    sphere = new THREE.Mesh(
-            new THREE.TetrahedronGeometry(raggioStart, facceStart),
-            new THREE.MeshPhongMaterial({ color: "green", flatShading: true })
-          );
-          sphere.name = "sphere";
-          sphere.receiveShadow = true;
-          sphere.castShadow = true;
-          scene.add(sphere);
-    }
+  sphere = new THREE.Mesh(
+  new THREE.TetrahedronGeometry(raggioStart, facceStart),
+  new THREE.MeshPhongMaterial({ color: "green", flatShading: true }));
+  sphere.name = "sphere";
+  scene.add(sphere);
+  }
 
 function riduciStart() {
 
   facceStart += 1;
-  raggioStart += 80;
+  raggioStart += 50;
+
   sphere = new THREE.Mesh(
-            new THREE.TetrahedronGeometry(raggioStart, facceStart),
-            new THREE.MeshPhongMaterial({ color: "green", flatShading: true })
-          );
-          sphere.name = "sphere";
-          sphere.receiveShadow = true;
-          sphere.castShadow = true;
-          scene.add(sphere);
-
-  
-    }
-
-
+  new THREE.TetrahedronGeometry(raggioStart, facceStart),
+  new THREE.MeshPhongMaterial({ color: "green", flatShading: true }));
+  sphere.name = "sphere";
+  scene.add(sphere);
+ 
+  }
 
 function init() {
   camera = new THREE.PerspectiveCamera(100, window.innerWidth / window.innerHeight, 1, 1000);
-  //camera.position.y = 150;
   camera.position.x = 500;
 
   scene = new THREE.Scene();
-  //scene.background = new THREE.Color( 0xff0000 );
 
   lights();
 
   renderer = new THREE.WebGLRenderer({ alpha: true });
   renderer.setSize(window.innerWidth, window.innerHeight);
-  //renderer.setClearColor( 0xffffff, 0);
 
-  effect.push(new AsciiEffect(renderer, "8@#4ù=_. ", { invert: true }));
+  effect.push(new AsciiEffect(renderer, "8a/;:=_. ", { invert: true }));
   effect[a].setSize(window.innerWidth, window.innerHeight);
   effect[a].domElement.style.color = "black";
-  //effect[a].domElement.style.backgroundColor = 'white';
 
   // Special case: append effect.domElement, instead of renderer.domElement.
   // AsciiEffect creates a custom domElement (a div container) where the ASCII elements are placed.

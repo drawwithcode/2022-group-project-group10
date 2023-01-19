@@ -28,7 +28,7 @@
         </div>
     </div>
 
-    <div id="receive" style="display:none">oof</div>
+    <p id="receive" style="display:none"></p>
 
     <div class="topnav">
       <div class="navbtn active" id="collect">Collect</div>
@@ -39,7 +39,7 @@
     <!-- COLLECT -->
     <div class="collect-container container active">
       <div class="camera-container"></div>
-      <h1>Collect a message from one of the clients</h1>
+      <h1>Frame the screen of a client to collect the message</h1>
     </div>
 
     <!-- CHAT -->
@@ -49,28 +49,6 @@
 
     <div class="box" id="ascicanvas2" style="display:none"></div>
     <div class="bottomnav" type="submit" id="done-button1" style="display: none; margin-top: 9px">Done</div>
-<!-- 
-    <div id="collect-buttons">
-      <button type="click" id="collect1" class="collect">collect1</button>
-      <button type="click" id="collect2" class="collect">collect2</button>
-      <button type="click" id="collect3" class="collect">collect3</button>
-      <button type="click" id="collect4" class="collect">collect4</button>
-    </div> -->
-
-    <!-- <div id="deliver container">
-      <button type="click" style="display: none" class="deliver">
-        deliver1
-      </button>
-      <button type="click" style="display: none" class="deliver">
-        deliver2
-      </button>
-      <button type="click" style="display: none" class="deliver">
-        deliver3
-      </button>
-      <button type="click" style="display: none" class="deliver">
-        deliver4
-      </button>
-    </div> -->
 
     <script src="serverino_sketch.js"></script>
 
@@ -92,7 +70,7 @@
 
 import * as THREE from "three";
 
-import { AsciiEffect } from "three/addons/effects/AsciiEffect.js";
+import { AsciiEffect } from "./jsm/effects/AsciiEffect.js";
 import { PolyhedronGeometry } from "./node_modules/three/src/geometries/PolyhedronGeometry.js";
 
 
@@ -106,15 +84,15 @@ const start = Date.now();
 let directionalLight1;
 let directionalLight2;
 
-let messageReceived = document.getElementById("receive").innerText;
+let messageReceived = document.querySelector("#receive").innerHTML;
 let raggioServer;
 let facceServer;
 let nParoleS;
- 
-init()
+
 
 
 function init() {
+  console.log("OOOOOO");
   camera = new THREE.PerspectiveCamera(100, window.innerWidth / window.innerHeight, 1, 1000);
   //camera.position.y = 150;
   camera.position.x = 500;
@@ -129,13 +107,10 @@ function init() {
   facceServer = Math.round(map_range(nParoleS, 1, 10, 0, 5));
 
   sphere = new THREE.Mesh(
-            new THREE.TetrahedronGeometry(raggioServer, facceServer),
-            new THREE.MeshPhongMaterial({ color: "green", flatShading: true })
-          );
-          sphere.name = "sphere";
-          sphere.receiveShadow = true;
-          sphere.castShadow = true;
-          scene.add(sphere);
+     new THREE.TetrahedronGeometry(raggioServer, facceServer),
+     new THREE.MeshPhongMaterial({ color: "green", flatShading: true }));
+     sphere.name = "sphere";
+     scene.add(sphere);
 
   renderer = new THREE.WebGLRenderer({ alpha: true });
   renderer.setSize(window.innerWidth, window.innerHeight);
@@ -173,6 +148,8 @@ function render() {
   scene.rotation.y = timer * 0.0005;
 
   effect[a].render(scene, camera);
+  init();
+
 }
 
 

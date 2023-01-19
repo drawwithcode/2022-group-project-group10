@@ -91,7 +91,7 @@ function sendMessage() {
     let div = p1.createDiv(user.message);
     div.parent(chat);
     let divClass = "client" + user.index;
-    div.addClass("box");
+    div.addClass("message");
     div.addClass(divClass);
   }
 }
@@ -110,6 +110,12 @@ function showMessage() {
   div.addClass("box");
   div.addClass(divClass);
   pendingServerMessage = false;
+
+  sections[1].classList.remove("active")
+  sections[2].classList.add("active")
+  navBtn[1].classList.remove("active")
+  navBtn[2].classList.add("active")
+  
 }
 
 let sketch = function (p) {};
@@ -161,10 +167,11 @@ let saturation;
 let lightness;
 
 let collectContainer = document.querySelector(".collect-container");
+let cameraContainer = document.querySelector(".camera-container");
 
 p2.setup = function () {
-  let collectCanva = p2.createCanvas(windowWidth, windowHeight);
-  collectCanva.parent(collectContainer);
+  let collectCanva = p2.createCanvas(windowWidth, windowWidth);
+  collectCanva.parent(cameraContainer);
   let d = p2.pixelDensity();
   p2.colorMode(p2.HSL, 360, 100, 100);
   p2.pixelDensity(1);
@@ -210,7 +217,7 @@ p2.setup = function () {
       audio: false,
       video: {
         facingMode: {
-          exact: "user",
+          exact: "environment",
         },
         width: w,
         height: h,

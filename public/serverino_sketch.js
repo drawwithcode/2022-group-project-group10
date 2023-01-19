@@ -99,10 +99,11 @@ function messageReady(message) {
   let div = p1.createDiv(savedMessage);
   div.parent(chat);
   let divClass = "client" + message.index;
-  div.addClass("box");
+  div.addClass("message");
   div.addClass(divClass);
-  document.getElementById("receive").innerHTML = savedMessage;
 
+  document.getElementById("receive").value = savedMessage;
+  document.getElementById("receive").setAttribute('value',savedMessage);
   
   collectContainer.style.display = "none";
   doneButton.style.display = "block";
@@ -206,7 +207,7 @@ p2.setup = function () {
       audio: false,
       video: {
         facingMode: {
-          exact: "user",
+          exact: "environment",
         },
         width: w,
         height: h,

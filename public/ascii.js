@@ -54,8 +54,7 @@ function getmydata() {
     new THREE.MeshPhongMaterial({ color: "green", flatShading: true })
   );
   sphere.name = "sphere";
-  sphere.receiveShadow = true;
-  sphere.castShadow = true;
+  sphere.position.set(0, 150, 0);
   scene.add(sphere);
 
   if (radius < radiusArr[radiusArr.length - 2]) {
@@ -69,7 +68,7 @@ function getmydata() {
       new THREE.MeshPhongMaterial({ color: "green", flatShading: true })
     );
     sphere.name = "sphere";
-    sphere.castShadow = true;
+    sphere.position.set(0, 150, 0);
     scene.add(sphere);
   }
   console.log(sphere.position);
@@ -106,6 +105,8 @@ function init() {
   effect.push(new AsciiEffect(renderer, "#@%=+-:. ", { invert: true }));
   effect[a].setSize(window.innerWidth, window.innerHeight);
   effect[a].domElement.style.color = "black";
+  // effect[a].domElement.style.top = "-10vh";
+
   //effect[a].domElement.style.backgroundColor = 'white';
 
   // Special case: append effect.domElement, instead of renderer.domElement.
