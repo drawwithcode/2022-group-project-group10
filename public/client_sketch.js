@@ -119,7 +119,7 @@ let p1 = new p5(sketch);
 p1.setup = function () {
   p1.createCanvas(windowWidth, windowHeight);
   colorsArray = [
-    p1.color("#4778FF"), //blu server
+    p1.color("#0044ff"), //blu server
     p1.color("#5FEE87"), //verde 1
     p1.color("#C738AF"), //viola 2
     p1.color("#F8F00D"), //giallo 3
@@ -210,7 +210,7 @@ p2.setup = function () {
       audio: false,
       video: {
         facingMode: {
-          exact: "environment",
+          exact: "user",
         },
         width: w,
         height: h,

@@ -14,9 +14,16 @@
   <body>
 
     <div class="box" style="padding: 0.5%">
-      <div id="ascicanvas1"></div>
+      <div id="ascicanvas1" ></div>
 
-      <div class="mySlides" style="font-size: 80pt; mix-blend-mode: difference; line-height: 90%; color: #ffffff">Just <br> a chat
+      <div class="mySlides" style="max-width: 90%;">
+        <h1 style="font-size: 80pt; line-height: 90%; color: black; position: relative; z-index: 10; margin-bottom: 30px;">Just <br> a chat</h1>
+        <p style="font-size: 30pt; line-height: 100%; color: black; position: relative; z-index: 10"> But offline and you are the clients and the server </p>
+      </div>
+
+      <div class="mySlides">
+        We send messages everyday but we ignore the complexity of this action.
+        All the messaging apps work thanks to the Client–Server model.
       </div>
 
       <div class="mySlides">
@@ -99,18 +106,18 @@ const start = Date.now();
 let directionalLight1;
 let directionalLight2;
 let a = 0;
-let facceStart = 4;
-let raggioStart = 480;
+let facceStart = 5;
+let raggioStart = 400;
  
 init()
 sphere = new THREE.Mesh(
-            new THREE.TetrahedronGeometry(raggioStart, facceStart),
-            new THREE.MeshPhongMaterial({ color: "green", flatShading: true })
-          );
-          sphere.name = "sphere";
-          sphere.receiveShadow = true;
-          sphere.castShadow = true;
-          scene.add(sphere);
+     new THREE.TetrahedronGeometry(raggioStart, facceStart),
+     new THREE.MeshPhongMaterial({ color: "green", flatShading: true })
+     );
+     sphere.name = "sphere";
+     sphere.receiveShadow = true;
+     sphere.castShadow = true;
+     scene.add(sphere);
 
 
 function animazioneStart() {
@@ -118,7 +125,7 @@ function animazioneStart() {
   a += 1;
 
     facceStart -= 1;
-    raggioStart -= 80;
+    raggioStart -= 100;
 
         document.getElementById("ascicanvas1").removeChild(effect[a - 1].domElement);
     init();
@@ -165,7 +172,7 @@ function init() {
   renderer.setSize(window.innerWidth, window.innerHeight);
   //renderer.setClearColor( 0xffffff, 0);
 
-  effect.push(new AsciiEffect(renderer, "8*=+-:. ", { invert: true }));
+  effect.push(new AsciiEffect(renderer, "8@#4ù=_. ", { invert: true }));
   effect[a].setSize(window.innerWidth, window.innerHeight);
   effect[a].domElement.style.color = "black";
   //effect[a].domElement.style.backgroundColor = 'white';
@@ -201,12 +208,12 @@ function render() {
 
 function lights() {
   directionalLight1 = new THREE.DirectionalLight(0xffffff);
-  directionalLight1.position.set(10, 800, 500);
+  directionalLight1.position.set(10, 40, 200);
   directionalLight1.intensity = 10;
   scene.add(directionalLight1);
 
   directionalLight2 = new THREE.DirectionalLight(0xffffff);
-  directionalLight2.position.set(-500, -500, -500);
+  directionalLight2.position.set(-500, -1000, -200);
   scene.add(directionalLight2);
 }
 </script>

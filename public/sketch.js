@@ -96,10 +96,10 @@ function showSlides(n) {
     ButtonSx[0].style.display = "block";
     openAboutBtn.style.display = "none"
   }
-  if (n == 5) {
+  if (n == 6) {
     ButtonDx[0].style.display = "none";
     join[0].style.display = "block";
-  } else if (n < 5) {
+  } else if (n < 6) {
     ButtonDx[0].style.display = "block";
     join[0].style.display = "none";
   }

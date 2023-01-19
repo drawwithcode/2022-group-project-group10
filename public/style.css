@@ -46,20 +46,6 @@ canvas {
   position: fixed;
 }
 
-.bottomnav {
-  width: 100%;
-  height: 33px;
-  font-size: 16pt;
-  line-height: 1.5;
-  display: inline-block;
-  vertical-align: middle;
-  background-color: var(--grigiochiaro);
-  text-align: center;
-  display: flex;
-  position: fixed;
-  bottom: 0;
-  margin: none;
-}
 
 .btn {
   width: 100%;
@@ -108,7 +94,6 @@ a {
   border-radius: 0 3px 3px 0;
   user-select: none;
   right: 5vh;
-  margin-bottom: 5vh;
 }
 
 /**********ABOUT*************/
@@ -120,7 +105,7 @@ a {
   background-color: var(--grigiomedio);
   position: fixed;
   padding: 0.5%;
-  z-index: 2;
+  z-index: 20;
   display: none;
   overflow: scroll;
 }
@@ -204,6 +189,21 @@ a {
   /* background-color: var(--grigiomedio); */
 }
 
+.bottomnav {
+  width: 100%;
+  height: 33px;
+  font-size: 16pt;
+  line-height: 1.5;
+  background-color: var(--grigiochiaro);
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  margin: none;
+}
+
 .container {
   position: absolute;
   width: 100%;
@@ -216,6 +216,12 @@ a {
   height: 100%;
   z-index: 2;
   /* overflow: scroll; */
+}
+
+.collect-container h1 {
+  font-size: 30pt;
+  margin-top: 30px;
+  margin-left: 0.5%;
 }
 
 .client1 {
@@ -237,23 +243,26 @@ a {
 /**********SEND**********/
 
 ::placeholder {
-  color: white;
-  opacity: 0.7;
+  color: black;
+  opacity: 0.5;
 }
 
 #ascicanvas {
+  /* top: -3vh; */
   width: 100vw;
-  height: 60vh;
+  height: 40vh;
+  /* background-color: red; */
 }
 
 #ascicanvas1 {
+  top: -3vh;
   width: 100vw;
   height: 100%;
   position: absolute;
 }
 
 #scan-text {
-  bottom: 9px;
+  bottom: 40px;
   height: 66px;
   text-align: left;
   padding: 3px;
@@ -266,6 +275,7 @@ a {
 #message-input {
   border: none;
   background-color: rgba(0, 0, 0, 0);
+  font-size: 30pt;
 }
 
 canvas {
@@ -286,7 +296,6 @@ canvas {
   font-size: 20px;
   border-radius: 0 3px 3px 0;
   right: 5vh;
-  margin-bottom: 5vh;
 }
 
 .active {

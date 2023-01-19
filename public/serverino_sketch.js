@@ -91,6 +91,7 @@ function messageReady(message) {
   deliverButtons.forEach((deliverButton, deliverIndex) => {
     if (deliverIndex != message.index - 1) {
       deliverButton.style.display = "inline";
+
     }
   });
 
@@ -100,6 +101,8 @@ function messageReady(message) {
   let divClass = "client" + message.index;
   div.addClass("box");
   div.addClass(divClass);
+  document.getElementById("receive").innerHTML = savedMessage;
+
   
   collectContainer.style.display = "none";
   doneButton.style.display = "block";
@@ -148,6 +151,7 @@ let lightness;
 let pendingMessages = ["server", false, false, false, false];
 
 let collectContainer = document.querySelector(".collect-container");
+let cameraContainer = document.querySelector(".camera-container");
 
 serverinoSocket.on("pending-message", function (index) {
   pendingMessages[index] = true;
@@ -155,8 +159,8 @@ serverinoSocket.on("pending-message", function (index) {
 
 p2.setup = function () {
 
-  let collectCanva = p2.createCanvas(windowWidth, windowHeight);
-  collectCanva.parent(collectContainer);
+  let collectCanva = p2.createCanvas(windowWidth, windowWidth);
+  collectCanva.parent(cameraContainer);
   let d = p2.pixelDensity();
   p2.colorMode(p2.HSL, 360, 100, 100);
   p2.pixelDensity(1);
@@ -202,7 +206,7 @@ p2.setup = function () {
       audio: false,
       video: {
         facingMode: {
-          exact: "environment",
+          exact: "user",
         },
         width: w,
         height: h,
