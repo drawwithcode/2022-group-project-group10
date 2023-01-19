@@ -6,7 +6,7 @@
 ### Table of Contents
 1. [Project](#project) <br>
   1.1 [Concept](#concept) <br>
-  1.2 [Aim](#aim) <br>
+  1.2 [Technical requirements](#technical-requirements) <br>
   1.3 [Context of use and device](#context-of-use-and-device) <br>
 3. [Structure](#structure) <br>
   2.1 [Welcome page](#welcome-page) <br>
@@ -28,28 +28,29 @@
 
 
 ## Concept
-This project wants to recreate a chat group in physical space, in which people are the senders, the messengers and the receivers.
+This project wants to recreate a chat group in a physical space, in which people are the senders, the messengers and the receivers. This is a Client-Server simulation designed to discover in a simple way the interaction that we all use every day to communicate without perceiving it.
+Clients are the requesters that users use to communicate with each other through the server which is the provider that brings the message from a client to another.
 This experience aims to make more understandable to people what happens on a daily basis through messaging apps, but in general across all devices that use client and server interactions.
-Clients to communicate with each other have to connect to the room with their phones, everyone must go to the station of their color and then complete the steps of sending, packaging and collecting data through the server to see other’s messages.
+This project wants to recreate this type of intangible connection in a physical space by making it tangible, entrusting the sending and receiving of these messages to people.
+The prototype makes people move along the intangible flows that would otherwise accomplish data in the Web. It wants to expose the path that data takes before it reaches its destination, demonstrating in actual how this technology works.
 
-By entrusting the entire process of sending and receiving messages to users, the prototype makes people move along the intangible flows that would otherwise accomplish data in the Web. It wants to expose the path that data takes before it reaches its destination, demonstrating in  actual how this technology works.
-
-“Invisible things are the ones taken for granted: we do not focus our attention on the hammer itself when we use it—we just use it” 
+“Invisible things are the ones taken for granted: we do not focus our attention on the hammer itself when we use it – we just use it” 
 
 (Hallnäs & Redström, 2002)
-  <br>
 
-### Context of use and device
+  <br>
+  
+### Technical requirements 
+Five smartphones connected to the same wifi connection.
+
+### Context of use
 This exhibition is designed within a space for five people arranged in as many stations, characterized by colorful cardboards
 Only one is the server and it is placed in the center, when a client writes and packages a message, the server is able to collect and deliver the package.
 The other clients have to collect the package from the server and with that they will be able to read the message in the chat.
+
 <br>
 
 ## Structure
-<p align="center">
-  <img src="images/place-holder.png" width="700" />
-</p>
-Funzionamento generale. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap  <br>
 
 ### Welcome page
 <p align="center">
@@ -70,28 +71,28 @@ The participant who enters the room first will become server, the others become 
   <img src="images/place-holder.png" width="700" />
 </p>
 
-Clients write and package messages while waiting for the server to pick them up <br>
+Clients write and package messages and then wait for the server to pick them up.<br>
 
 ### Server's collect page
 <p align="center">
   <img src="images/place-holder.png" width="700" />
 </p>
 
-The Server scans the data package and collects the messages, then it takes the message to the other clients. <br>
+The Server frames the data package of the client with the phone camera in order to collect the message, then it shows the data package to all the other clients. <br>
 
 ### Client's collect page
 <p align="center">
   <img src="images/place-holder.png" width="700" />
 </p>
 
-Client collects the data package from the server. <br>
+Clients collect the data package from the server by scanning the data package.<br>
 
 ### Chat page
 <p align="center">
   <img src="images/place-holder.png" width="700" />
 </p>
 
-After collecting the data, the message is displayed on the chat section.
+When a client collects the data, the message is finally displayed on the chat section.
 
 <br>
 
@@ -102,33 +103,23 @@ After collecting the data, the message is displayed on the chat section.
   <img src="images/place-holder.png" width="700" />
 </p>
 
-To make the client-server model more intuitive and easy to understand,we have reworked the steps that would have been handled automatically by the computer, turning them into tasks to be taken by participants:<br>
--client sends a request to the server by writing a message and packaging the data.<br>
--server finds the packaged data in a 3D ascii form and collects it with the scanner.<br>
--server transports the packaged data to other clients, which also collect it with their devices.<br>
--Clients receive the response and see the message.<br>
-<br>
-
--To collect the message, the scanner relies on the color of the participant's screen and not the ASCII data package. Is a sharp way we choose to identify clients, rather than qr-code or other popular methods.
-<br>
+To make the client-server model more intuitive and easy to understand, we have reworked the steps that would have been handled automatically by the computer, turning them into tasks to be taken by participants:
+- Clients write a message, package the data and ask the server to take it.
+- Server finds the packaged data in a 3D ascii form and collects it with the scanner.
+- Server transports the packaged data to other clients, which also collect it with their devices.
+- Clients receive the response and see the message.
 
 To show the data packages the texts entered by participants are associated with three-dimensional figures with varying sizes and characteristics depending on the text entered.
-That graphic element represented well the packing of data and the hidden part of communication that happens after sending a message, that we normally don't know about 
-<br>
+That graphic element represented well the packing of data and the hidden part of communication that happens after sending a message, that we normally don't know about.
+
+To collect the message, the scanner relies on the color of the participant's screen and not the ASCII data package. Is a way we find and choose to identify clients that better suits the project rather than qr-code or other popular methods.
+
 
 ## Coding challenges
 
 ### Server
 
-Creating a full operating server
-Here is how a client/server model works:
--The client sends a request to the server 
--The server (perpetually waiting) receives the request
--Performs the requested service, and may perform several at the same time;
--Sends a response and any data to the client;
--The client receives the response and any data.
-
-This type of connection is Unicast: the server communicates with only one client at a time; the advantages of this model concern the possibility of having centralized resources, such as a single database. There is the assurance of better security since network paths can be traced back in a timely manner and open server ports are known. Finally, the scalability of the model is immediate and architecture administration is simplified since (most of) the workload is concentrated on the server.
+One of the main coding challenges consists in properly taking advantage of the socket.io library to set up the server-client structure.
 <br>
 
 ```
@@ -222,8 +213,7 @@ function newConnection(newSocket) {
 ```
 
 ### Color recognition
-Creating a color recognizer that uses the camera is no big deal, the difficulty occurs when you have to recognize the color of a screen.
-On a technical level creating the final color scanner was a bit challenging. When capturing a screen with the camera, the colors are distorted according to the device display. We had to calibrate the color scanner to the perception of different devices by averaging the color codes in HSB (Hue, Saturation, Brightness) and adding a threshold.
+Creating a color recognizer that uses the camera is no big deal, the difficulty occurs when you have to recognize the color of a screen. On a technical level creating the final color scanner was a bit challenging. When capturing a screen with the camera, the colors are distorted according to the device display. We had to calibrate the color scanner to the perception of different devices by averaging the color codes in HSB (Hue, Saturation, Brightness) and adding a threshold.
  <br>
 
 ```
@@ -231,23 +221,12 @@ On a technical level creating the final color scanner was a bit challenging. Whe
     let ratio = (100 * color.total) / (subW * subH);
     if (ratio >= 70) {
       if (color.name == "blue") {
-        colorFound = "HO TROVATO: " + color.name;
-        console.log("colore trovato");
         if (pendingServerMessage == true) {
           showMessage();
         }
       }
     }
   });
-
-  // p2.textAlign(p2.CENTER);
-  // p2.textSize(32);
-  // p2.fill("white");
-  // p2.text(colorFound, p2.width / 2, 50);
-
-  p2.noFill();
-  p2.rect(w / 2, h / 2, (h * 0.9 * 9) / 18, h * 0.9, 20);
-};
 
 function RGBToHSL(r, g, b) {
   // Make r, g, and b fractions of 1
@@ -297,48 +276,14 @@ function findAverageColor() {
     totalLig += avgLigArray[i];
   }
 
-  let avgHue = totalHue / avgHueArray.length;
-  let avgSat = totalSat / avgSatArray.length;
-  let avgLig = totalLig / avgLigArray.length;
-
-  p2.textAlign(p2.LEFFT);
-  p2.textSize(16);
-
-  p2.fill("black");
-  p2.text("hue", 10, w + 30);
-  p2.text("saturation", 10, w + 130);
-  p2.text("brightness", 10, w + 230);
-
-  p2.colorMode(p2.HSL, 360, 100, 100);
-  p2.fill(avgHue, avgSat, avgLig);
-  p2.rect(10, w + 50, p2.map(avgHue, 0, 360, 0, p2.width - 50), 30);
-  p2.rect(10, w + 150, p2.map(avgSat, 0, 100, 0, p2.width - 50), 30);
-  p2.rect(10, w + 250, p2.map(avgLig, 0, 100, 0, p2.width - 50), 30);
-  p2.rect(w / 2, h / 1.5, subW + 2, subH + 2);
-  p2.noFill();
-  p2.rect(w / 2, h / 2, (h * 0.9 * 9) / 18, h * 0.9, 20);
-
-  p2.fill("black");
-  p2.text(
-    p2.round(avgHue),
-    p2.map(avgHue, 0, 360, 0, p2.width - 50) + 20,
-    w + 50 + 15
-  );
-  p2.text(
-    p2.round(avgSat),
-    p2.map(avgSat, 0, 100, 0, p2.width - 50) + 20,
-    w + 150 + 15
-  );
-  p2.text(
-    p2.round(avgLig),
-    p2.map(avgLig, 0, 100, 0, p2.width - 50) + 20,
-    w + 250 + 15
-  );
 ```
 
 ### ASCII 3d shape 
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap  <br>
+The challenge with the Ascii was to learn a new library, which needs to be linked to collaborate with external scripts, and it’s based on type modules. 
+Another thing to take into consideration was the handling of the canvas so that the object remains fixed and destroys it if another message is sent. 
+Finally, since Ascii code was applied to a three-dimensional figure, it was necessary to manage the camera and lighting settings to get a better result.
+  <br>
 
 ```
 function getmydata() {
@@ -400,6 +345,10 @@ function init() {
 ## Credits
 [P5js](https://p5js.org/) -
 P5 JavaScript library was used to develop the WebApp. <br>
+[Three.js](https://https://threejs.org/) -
+Three JavaScript library was used to create e manipulate 3D shape. <br>
+[Socket.io](https://socket.io/) -
+Socket.io was used to create a server. <br>
 
 
 ## Team members
