@@ -1,6 +1,6 @@
 import * as THREE from "three";
 
-import { AsciiEffect } from "three/addons/effects/AsciiEffect.js";
+import { AsciiEffect } from "./jsm/effects/AsciiEffect.js";
 import { PolyhedronGeometry } from "./node_modules/three/src/geometries/PolyhedronGeometry.js";
 
 document.querySelector("#message-input").addEventListener("input", getmydata);
