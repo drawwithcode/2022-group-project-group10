@@ -126,9 +126,93 @@ This type of connection is Unicast: the server communicates with only one client
 
 ```
 ICOLLARE CODICE QUA
-#
-#
-#
+function newConnection(newSocket) {
+  //global chat entra
+  newSocket.on("chatConnected", function (chatId) {
+    globalChat = chatId;
+    io.emit("chat connected");
+    console.log("nuova chat globale: " + chatId);
+  });
+
+  //controlla disponibilità di posti
+  newSocket.on("checkAvailability", checkAvailability);
+
+  //manda lista aggiornata a tutti appena entrano
+  newSocket.on("requestUserUpdate", function () {
+    io.emit("updateUsers", userArray);
+    if (globalChat) {
+      io.emit("chat connected");
+    }
+  });
+
+  //manda disponibilità
+  function checkAvailability() {
+    for (i = 0; i < 5; i++) {
+      if (userArray[i]) {
+        console.log(i + " occupato");
+      } else {
+        console.log(i + " libero");
+        io.to(newSocket.id).emit("placeAvailable", i);
+      }
+    }
+  }
+
+  //entra nella stanza e aggiorna array
+  newSocket.on("enter-room", function () {
+    for (let i = 0; true; i++) {
+      if (typeof userArray[i] == "undefined") {
+        userArray[i] = newSocket.id;
+        console.log(userArray);
+        io.emit("updateUsers", userArray);
+        break;
+      }
+    }
+  });
+
+  //esce dalla stanza stanza e aggiorna array e chat
+  newSocket.on("disconnect", function () {
+    if (newSocket.id == globalChat) {
+      console.log("chat disconnected");
+      globalChat = undefined;
+      io.emit("chat disconnected");
+    }
+
+    let index = userArray.indexOf(newSocket.id);
+    if (index > -1) {
+      delete userArray[index];
+      if (userArray.length > 5) {
+        userArray.pop();
+      }
+      console.log(userArray);
+      io.emit("updateUsers", userArray);
+    }
+  });
+
+  newSocket.on("pending-message", (user) => {
+    io.emit("pending-message", user.index);
+  });
+
+  newSocket.on("send-chat-message", (user) => {
+    console.log(user.message);
+    newSocket.broadcast.emit("broadcast-message", user);
+    index = userArray.indexOf(newSocket.id);
+    messageSent[index - 1] = "sent";
+  });
+
+  newSocket.on("get-message", (index) => {
+    if (typeof userArray[index] != "undefined") {
+      io.to(userArray[index]).emit("message-request");
+      console.log(index + "  è stato scansionato id:  " + userArray[index]);
+    } else {
+      console.log("il client " + index + " non è connesso");
+    }
+  });
+
+  newSocket.on("show-message", (index) => {
+    newSocket.to(userArray[index]).emit("show-message");
+    messageSent[index - 1] = "sent";
+    console.log(userArray);
+    console.log(messageSent);
 ```
 
 ### Color recognition
