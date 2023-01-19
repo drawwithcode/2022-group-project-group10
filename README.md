@@ -46,35 +46,35 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 
 ## Structure
 <p align="center">
-  <img src="place-holder.png" width="700" />
+  <img src="images/place-holder.png" width="700" />
 </p>
 Funzionamento generale.   Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap  <br>
 
 
 ### Welcome page
 <p align="center">
-  <img src="place-holder.png" width="700" />
+  <img src="ù" width="700" />
 </p>
 
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap  <br>
 
 ### Client or Server
 <p align="center">
-  <img src="place-holder.png" width="700" />
+  <img src="images/place-holder.png" width="700" />
 </p>
 
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap  <br>
 
 ### Client's send page
 <p align="center">
-  <img src="place-holder.png" width="700" />
+  <img src="images/place-holder.png" width="700" />
 </p>
 
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap  <br>
 
 ### Server's collect page
 <p align="center">
-  <img src="place-holder.png" width="700" />
+  <img src="images/place-holder.png" width="700" />
 </p>
 
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap  <br>
@@ -82,7 +82,7 @@ This is a page between the solo and the interactive experience: a five seconds c
 
 ### Chat page
 <p align="center">
-  <img src="place-holder.png" width="700" />
+  <img src="images/place-holder.png" width="700" />
 </p>
 
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap  <br>
@@ -90,20 +90,20 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 
 ## Design challenges
 <p align="center">
-  <img src="place-holder.png" width="700" />
+  <img src="images/place-holder.png" width="700" />
 </p>
 
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap  <br>
 
 ### Communicating data exchange
 <p align="center">
-  <img src="place-holder.png" width="700" />
+  <img src="images/place-holder.png" width="700" />
 </p>
 
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap  <br>
 
 <p align="center">
-  <img src="place-holder.png" width="700" />
+  <img src="images/place-holder.png" width="700" />
 </p>
 
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap  <br>
