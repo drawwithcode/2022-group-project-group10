@@ -6,6 +6,7 @@
   --rosa: #c738af;
   --arancio: #f8f00d;
   --rosso: #ec5555;
+  --blue: #0044ff;
   --grigiochiaro: #cdcdcd;
   --grigiomedio: #b7b6b6;
   --grigioscuro: #929292;
@@ -19,6 +20,7 @@ body {
   font-family: Helvetica, sans-serif;
   font-weight: bold;
   color: var(--nero);
+  overflow: hidden;
 }
 
 canvas {
@@ -87,7 +89,7 @@ a {
   border-radius: 0 3px 3px 0;
   user-select: none;
   left: 5vh;
-  margin-bottom: 5vh;
+  /* margin-bottom: 5vh; */
 }
 /* Position the "next button" to the right */
 .next {
@@ -102,6 +104,76 @@ a {
   right: 5vh;
   margin-bottom: 5vh;
 }
+
+/**********ABOUT*************/
+.about-container {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: var(--grigiomedio);
+  position: fixed;
+  padding: 0.5%;
+  z-index: 2;
+  display: none;
+}
+
+.about-container h1{
+  font-size: 30pt;
+  margin-bottom: 5px;
+}
+
+.about-container p {
+  font-size: 16pt;
+}
+
+.openabout {
+  position:absolute;
+  left: 5vh;
+}
+
+.closeabout {
+  width: 100%;
+  height: 33px;
+  padding-left: 5vh;
+  font-size: 16pt;
+  line-height: 1.5;
+  display: inline-block;
+  vertical-align: middle;
+  background-color: var(--grigiochiaro);
+  text-align: center;
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  margin: none;
+}
+
+
+/**********ANNUNCIO RUOLO*************/
+.role-announcement {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: white;
+  position: fixed;
+  z-index: 2;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; */
+}
+
+.role-announcement h1{
+  font-size: 30pt;
+  text-align: left;
+  margin-bottom: 5px;
+}
+
+/* .role-announcement p {
+  font-size: 16pt;
+  text-align: center;
+} */
 
 /**********CHAT**********/
 
@@ -129,6 +201,7 @@ a {
 
 .chat-container {
   height: 100%;
+  z-index: 2;
   /* overflow: scroll; */
 }
 
@@ -150,19 +223,31 @@ a {
 
 /**********SEND**********/
 
+::placeholder {
+  color: white;
+  opacity: 0.7;
+}
+
 #ascicanvas {
   width: 100vw;
   height: 60vh;
 }
 
+#ascicanvas1 {
+  top: 20vh;
+  width: 100vw;
+  height: 100%;
+  position: absolute;
+}
+
 #scan-text {
-  vertical-align: text-bottom;
   bottom: 9px;
   height: 66px;
   text-align: left;
-  padding: 0.5%;
+  padding: 3px;
+  margin-left: 10px;
   font-size: 16pt;
-  line-height: 1;
+  line-height: 1.2;
   position: fixed;
 }
 
@@ -203,3 +288,5 @@ canvas {
   pointer-events: none;
   cursor: auto;
 }
+
+

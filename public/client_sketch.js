@@ -7,6 +7,7 @@ let recievedMessage;
 let recievedMessageIndex;
 let pendingServerMessage = false;
 
+let roleAnnouncement = document.querySelector(".role-announcement")
 let messageForm = document.getElementById("send-container");
 let messageInput = document.getElementById("message-input");
 let sendButton = document.getElementById("send-button");
@@ -76,6 +77,12 @@ function updateUsers(userArray) {
   user.role = "client";
 }
 
+//NASCONDI ANNUNCIO RUOLO SE PREMO "OK"
+let roleAcceptance = document.querySelector(".role-accepted")
+roleAcceptance.addEventListener("click", function() {
+  roleAnnouncement.style.display = "none";
+})
+
 function sendMessage() {
   if (typeof user.message != "undefined" && user.message != "") {
     console.log("sto inviando:  " + user.message);
@@ -122,6 +129,7 @@ p1.setup = function () {
 
 p1.draw = function () {
   user.c = colorsArray[user.index];
+  roleAnnouncement.style.backgroundColor = user.c
   if (user.c) {
     p1.background(user.c);
   }
@@ -289,10 +297,10 @@ p2.draw = function () {
     }
   });
 
-  p2.textAlign(p2.CENTER);
-  p2.textSize(32);
-  p2.fill("white");
-  p2.text(colorFound, p2.width / 2, 50);
+  // p2.textAlign(p2.CENTER);
+  // p2.textSize(32);
+  // p2.fill("white");
+  // p2.text(colorFound, p2.width / 2, 50);
 
   p2.noFill();
   p2.rect(w / 2, h / 2, (h * 0.9 * 9) / 18, h * 0.9, 20);

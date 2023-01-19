@@ -13,6 +13,21 @@
   </head>
 
   <body>
+
+    <div class="role-announcement" style="background-color: #0044ff;">
+      <h1>You are a Server. <br><br>
+        Find your place in the room</h1>
+       
+      <div
+          class="btn bottomnav role-accepted"
+          type="submit"
+          id="send-button"
+          style="margin-top: 33px"
+        >
+          Ok
+        </div>
+    </div>
+
     <div class="topnav">
       <div class="navbtn active" id="collect">Collect</div>
       <div class="navbtn" id="chat">Chat</div>
@@ -21,22 +36,24 @@
 
     <!-- COLLECT -->
     <div class="collect-container container active">
-      <div class="camera-container"></div>
+      <!-- <div class="camera-container"></div> -->
     </div>
+    <div class="box" id="ascicanvas" style="display:none"></div>
+    <div class="bottomnav" type="submit" id="done-button1" style="display: none; margin-top: 9px">Done</div>
 
     <!-- CHAT -->
     <div class="chat-container container">
       <div class="messages-container"></div>
     </div>
-
+<!-- 
     <div id="collect-buttons">
       <button type="click" id="collect1" class="collect">collect1</button>
       <button type="click" id="collect2" class="collect">collect2</button>
       <button type="click" id="collect3" class="collect">collect3</button>
       <button type="click" id="collect4" class="collect">collect4</button>
-    </div>
+    </div> -->
 
-    <div id="deliver container">
+    <!-- <div id="deliver container">
       <button type="click" style="display: none" class="deliver">
         deliver1
       </button>
@@ -49,8 +66,23 @@
       <button type="click" style="display: none" class="deliver">
         deliver4
       </button>
-    </div>
+    </div> -->
 
     <script src="serverino_sketch.js"></script>
+
+    <!-- *************************** CODICE ASCII *************************** -->
+
+    <script async src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"></script>
+ 
+    <script type="importmap">
+       {
+         "imports": {
+           "three": "../node_modules/three/build/three.module.js",
+           "three/addons/": "./jsm/"
+         }
+       }
+     </script>
+ 
+     <!-- <script src="ascii.js" type="module"></script> -->
   </body>
 </html>

@@ -45,3 +45,62 @@ function chatDisconnected() {
 function setup() {
     introSocket.emit("requestUserUpdate")
 }
+
+let openAboutBtn = document.querySelector(".openabout")
+let closeAboutBtn = document.querySelector(".closeabout")
+let aboutSection = document.querySelector(".about-container")
+
+function openAbout() {
+    aboutSection.style.display = "block";
+    openAboutBtn.style.display = "none";
+}
+
+function closeAbout() {
+    aboutSection.style.display = "none";
+    openAboutBtn.style.display = "block";
+}
+
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides((slideIndex += n));
+}
+
+function currentSlide(n) {
+  showSlides((slideIndex = n));
+}
+
+function showSlides(n) {
+  var i;
+  let ButtonSx = document.getElementsByClassName("prev");
+  let ButtonDx = document.getElementsByClassName("next");
+  let slides = document.getElementsByClassName("mySlides");
+  let join = document.getElementsByClassName("enter-room-button");
+
+  if (n < 1) {
+    slideIndex = 1;
+  }
+
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+
+  console.log(slideIndex);
+  slides[slideIndex - 1].style.display = "block";
+
+  if (n == 1) {
+    ButtonSx[0].style.display = "none";
+    openAboutBtn.style.display = "block"
+  } else if (n > 1) {
+    ButtonSx[0].style.display = "block";
+    openAboutBtn.style.display = "none"
+  }
+  if (n == 5) {
+    ButtonDx[0].style.display = "none";
+    join[0].style.display = "block";
+  } else if (n < 5) {
+    ButtonDx[0].style.display = "block";
+    join[0].style.display = "none";
+  }
+}

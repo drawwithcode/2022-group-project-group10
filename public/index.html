@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
     <title>Introduzione</title>
 
@@ -19,7 +19,9 @@
     <a href="Scanner.html"> SCANNER </a>-->
 
     <div class="box" style="padding: 0.5%">
-      <div class="mySlides">This is a Client-server simulator</div>
+
+      <div class="mySlides">Client-server unraveled
+      </div>
 
       <div class="mySlides">
         Clients are the computers that users use to communicate with each other
@@ -40,58 +42,146 @@
         There are two to four clients and only one server. <br />
         Arrange yourself according to the colors on the floor.
       </div>
+
+      <div id="ascicanvas1"></div>
+    </div>
+
+
+    
+    <div class="about-container">
+      <h1>A project by:<br>
+       Federico Bobbo <br> Franceso Bonetti <br> Sarah Cosentino<br> Matteo Dell'Agostino <br>  Enrico Isidori<br><br>
+      Creative Coding 2022/2023<br>
+Politecnico di Milano <br> Scuola del Design <br> Communication Design<br><br>
+Faculty:<br> Michele Mauri <br> Andrea Benedetti<br> Tommaso Elli
+    
+    </h1>
+      <a class="closeabout" onclick="closeAbout()">Close</a>
     </div>
 
     <div class="bottomnav">
+      <a class="openabout" onclick="openAbout()">About</a>
       <a class="prev" onclick="plusSlides(-1)">Previous</a>
       <a class="next" onclick="plusSlides(1)">Next</a>
       <a class="enter-room-button">Join</a>
     </div>
 
     <script src="sketch.js"></script>
-    <script>
-      var slideIndex = 1;
-      showSlides(slideIndex);
 
-      function plusSlides(n) {
-        showSlides((slideIndex += n));
-      }
 
-      function currentSlide(n) {
-        showSlides((slideIndex = n));
-      }
+<!-- *************************** CODICE ASCII *************************** -->
 
-      function showSlides(n) {
-        var i;
-        let ButtonSx = document.getElementsByClassName("prev");
-        let ButtonDx = document.getElementsByClassName("next");
-        let slides = document.getElementsByClassName("mySlides");
-        let join = document.getElementsByClassName("enter-room-button");
+<script async src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"></script>
 
-        if (n < 1) {
-          slideIndex = 1;
-        }
+<script type="importmap">
+{
+  "imports": {
+    "three": "../node_modules/three/build/three.module.js",
+    "three/addons/": "./jsm/"
+  }
+}
+</script>
 
-        for (i = 0; i < slides.length; i++) {
-          slides[i].style.display = "none";
-        }
+<script type="module">
 
-        console.log(slideIndex);
-        slides[slideIndex - 1].style.display = "block";
+import * as THREE from "three";
 
-        if (n == 1) {
-          ButtonSx[0].style.display = "none";
-        } else if (n > 1) {
-          ButtonSx[0].style.display = "block";
-        }
-        if (n == 5) {
-          ButtonDx[0].style.display = "none";
-          join[0].style.display = "block";
-        } else if (n < 5) {
-          ButtonDx[0].style.display = "block";
-          join[0].style.display = "none";
-        }
-      }
-    </script>
+import { AsciiEffect } from "three/addons/effects/AsciiEffect.js";
+import { PolyhedronGeometry } from "./node_modules/three/src/geometries/PolyhedronGeometry.js";
+
+document.querySelector(".next").addEventListener("click", animazioneStart);
+
+let camera, scene, renderer;
+let cameraTarget = new THREE.Vector3(0, 0, 0);
+let effect = [];
+let sphere;
+const start = Date.now();
+
+let directionalLight1;
+let directionalLight2;
+let a = 0;
+let facceStart = 0;
+let raggioStart = 80;
+
+
+function animazioneStart() {
+  init();
+  console.log("AAA");
+
+    facceStart += 1;
+    raggioStart += 20;
+
+    
+        sphere = new THREE.Mesh(
+            new THREE.TetrahedronGeometry(raggioStart, facceStart),
+            new THREE.MeshPhongMaterial({ color: "green", flatShading: true })
+          );
+          sphere.name = "sphere";
+          sphere.receiveShadow = true;
+          sphere.castShadow = true;
+          scene.add(sphere);
+    }
+
+
+
+function init() {
+  camera = new THREE.PerspectiveCamera(100, window.innerWidth / window.innerHeight, 1, 1000);
+  //camera.position.y = 150;
+  camera.position.x = 500;
+
+  scene = new THREE.Scene();
+  //scene.background = new THREE.Color( 0xff0000 );
+
+  lights();
+
+  renderer = new THREE.WebGLRenderer({ alpha: true });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  //renderer.setClearColor( 0xffffff, 0);
+
+  effect.push(new AsciiEffect(renderer, "#@%=+-:. ", { invert: true }));
+  effect[a].setSize(window.innerWidth, window.innerHeight);
+  effect[a].domElement.style.color = "black";
+  //effect[a].domElement.style.backgroundColor = 'white';
+
+  // Special case: append effect.domElement, instead of renderer.domElement.
+  // AsciiEffect creates a custom domElement (a div container) where the ASCII elements are placed.
+  document.getElementById("ascicanvas1").appendChild(effect[a].domElement);
+  window.addEventListener("resize", onWindowResize);
+  animate();
+}
+
+function onWindowResize() {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  effect[a].setSize(window.innerWidth, window.innerHeight);
+}
+
+function animate() {
+  requestAnimationFrame(animate);
+  render();
+}
+
+function render() {
+  const timer = Date.now() - start;
+  camera.lookAt(cameraTarget);
+  //camera.rotation.x = timer * 0.0008;
+  scene.rotation.y = timer * 0.0005;
+
+  effect[a].render(scene, camera);
+}
+
+function lights() {
+  directionalLight1 = new THREE.DirectionalLight(0xffffff);
+  directionalLight1.position.set(10, 800, 500);
+  directionalLight1.intensity = 10;
+  scene.add(directionalLight1);
+
+  directionalLight2 = new THREE.DirectionalLight(0xffffff);
+  directionalLight2.position.set(-500, -500, -500);
+  scene.add(directionalLight2);
+}
+</script>
   </body>
 </html>
