@@ -1,31 +1,29 @@
 
 <p align="center">
-  <img src="images/place-holder.png" width="700" />
+  <img src="images/logo.png" width="700" />
 </p>
 
 ### Table of Contents
 1. [Project](#project) <br>
   1.1 [Concept](#concept) <br>
   1.2 [Aim](#aim) <br>
-  1.3 [Context of use and device](#context) <br>
+  1.3 [Context of use and device](#context-of-use-and-device) <br>
 3. [Structure](#structure) <br>
   2.1 [Welcome page](#welcome-page) <br>
   2.2 [Client or Server](#client-or-server) <br> 
-  2.3 [Client's send page](#client-send) <br>
-  2.4 [Server's collect page](#server-send) <br>
-  2.5 [Client's collect page](#client-collect) <br>
-  2.6 [Chat pages](#chat) <br>
+  2.3 [Client's send page](#clients-send-page) <br>
+  2.4 [Server's collect page](#servers-collect-page) <br>
+  2.5 [Client's collect page](#clients-collect-page) <br>
+  2.6 [Chat pages](#chat-pages) <br>
 4. [Design challenges](#design-challenges) <br>
   3.1 [Communicating data exchange](#communicating-data-exchange) <br>
 5. [Coding challenges](#coding-challenges) <br>
   4.1 [Server](#server) <br> 
   4.2 [Color recognition](#color-recognition) <br>
-  4.3 [ASCII 3D shape](#ascii) <br> 
-6. [References](#references) <br>
-7. [Credits](#credits) <br>
-8. [Video demo](#video-demo) <br>
-9. [Team members](#team-members) <br>
-10. [Course](#course) <br>
+  4.3 [ASCII 3D shape](#ascii-3d-shape) <br> 
+6. [Credits](#credits) <br>
+7. [Team members](#team-members) <br>
+8. [Course](#course) <br>
 
 
 
@@ -152,10 +150,10 @@ P5 JavaScript library was used to develop the WebApp. <br>
 
 
 ## Team members
-Matteo dell’Agostino<br>
 Federico Bobbo<br>
 Francesco Bonetti<br> 
 Sarah Cosentino<br> 
+Matteo dell’Agostino<br>
 Enrico Isidori
 
 
