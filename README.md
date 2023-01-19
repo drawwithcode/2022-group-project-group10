@@ -64,7 +64,7 @@ In the welcome page there is a short slideshow explaining how the prototype work
   <img src="images/place-holder.png" width="700" />
 </p>
 
-The participant who enters the room first will become server, the others become clients as long as there is room available <br>
+The first participant who enters the room will become a server, the next four will become clients. <br>
 
 ### Client's send page
 <p align="center">
@@ -104,10 +104,10 @@ When a client collects the data, the message is finally displayed on the chat se
 </p>
 
 To make the client-server model more intuitive and easy to understand, we have reworked the steps that would have been handled automatically by the computer, turning them into tasks to be taken by participants:
-- Clients write a message, package the data and ask the server to take it.
-- Server finds the packaged data in a 3D ascii form and collects it with the scanner.
-- Server transports the packaged data to other clients, which also collect it with their devices.
-- Clients receive the response and see the message.
+-Clients write a message, package the data and ask the server to take it.
+-Server finds the packaged data in a 3D ascii form and collects it with the scanner.
+-Server transports the packaged data to other clients, which also collect it with their devices.
+-Clients receive the response and see the message.
 
 To show the data packages the texts entered by participants are associated with three-dimensional figures with varying sizes and characteristics depending on the text entered.
 That graphic element represented well the packing of data and the hidden part of communication that happens after sending a message, that we normally don't know about.
@@ -119,7 +119,8 @@ To collect the message, the scanner relies on the color of the participant's scr
 
 ### Server
 
-One of the main coding challenges consists in properly taking advantage of the socket.io library to set up the server-client structure.
+One of the main coding challenges consists in properly taking advantage of the socket.io library to make the user understand the complexity behind client/server connections.
+As if that were not enough, we had to complicate a process that is normally completely managed by the computer, by creating a fake server on a client to expose how an actual chat works.To do this we have to check all the phases and recreate all  checkpoints that normally are auto-managed, adding different actions for each step and make the operation look real
 <br>
 
 ```
