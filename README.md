@@ -6,8 +6,7 @@
 ### Table of Contents
 1. [Project](#project) <br>
   1.1 [Concept](#concept) <br>
-  1.2 [Aim](#aim) <br>
-  1.3 [Context of use and device](#context-of-use-and-device) <br>
+  1.2 [Context of use and device](#context-of-use-and-device) <br>
 3. [Structure](#structure) <br>
   2.1 [Welcome page](#welcome-page) <br>
   2.2 [Client or Server](#client-or-server) <br> 
