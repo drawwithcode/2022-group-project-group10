@@ -27,29 +27,29 @@
 
 
 
-## Project
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap  <br>
+## Concept
+This project wants to recreate a chat group in physical space, in which people are the senders, the messengers and the receivers.
+This experience aims to make more understandable to people what happens on a daily basis through messaging apps, but in general across all devices that use client and server interactions.
+Clients to communicate with each other have to connect to the room with their phones, everyone must go to the station of their color and then complete the steps of sending, packaging and collecting data through the server to see other’s messages.
 
-### Concept 
-Concept generale.   Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap 
-<br>
+By entrusting the entire process of sending and receiving messages to users, the prototype makes people move along the intangible flows that would otherwise accomplish data in the Web. It wants to expose the path that data takes before it reaches its destination, demonstrating in  actual how this technology works.
 
-### Aim 
+“Invisible things are the ones taken for granted: we do not focus our attention on the hammer itself when we use it—we just use it” 
 
-Scopo e Relazione con il tema. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap 
-t has survived not only five centuries, but also the leap
-<br>
-
+(Hallnäs & Redström, 2002)
+  <br>
 
 ### Context of use and device
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap  <br>
+This exhibition is designed within a space for five people arranged in as many stations, characterized by colorful cardboards
+Only one is the server and it is placed in the center, when a client writes and packages a message, the server is able to collect and deliver the package.
+The other clients have to collect the package from the server and with that they will be able to read the message in the chat.
+<br>
 
 ## Structure
 <p align="center">
   <img src="images/place-holder.png" width="700" />
 </p>
 Funzionamento generale.   Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap  <br>
-
 
 ### Welcome page
 <p align="center">
@@ -90,21 +90,39 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 
 ## Design challenges
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap  <br>
-
 ### Communicating data exchange
 <p align="center">
   <img src="images/place-holder.png" width="700" />
 </p>
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap  <br>
+To make the client-server model more intuitive and easy to understand,we have reworked the steps that would have been handled automatically by the computer, turning them into tasks to be taken by participants
+-client sends a request to the server by writing a message and packaging the data.
+-server finds the packaged data in a 3D ascii form and collects it with the scanner.
+-server transports the packaged data to other clients, which also collect it with their devices.
+-Clients receive the response and see the message.
+<br>
 
+-To collect the message, the scanner relies on the color of the participant's screen and not the ASCII data package. Is a sharp way we choose to identify clients, rather than qr-code or other popular methods.
+<br>
+
+To show the data packages the texts entered by participants are associated with three-dimensional figures with varying sizes and characteristics depending on the text entered.
+That graphic element represented well the packing of data and the hidden part of communication that happens after sending a message, that we normally don't know about 
+<br>
 
 ## Coding challenges
 
 ### Server
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap  <br>
+Creating a full operating server
+Here is how a client/server model works:
+-The client sends a request to the server 
+-The server (perpetually waiting) receives the request
+-Performs the requested service, and may perform several at the same time;
+-Sends a response and any data to the client;
+-The client receives the response and any data.
+
+This type of connection is Unicast: the server communicates with only one client at a time; the advantages of this model concern the possibility of having centralized resources, such as a single database. There is the assurance of better security since network paths can be traced back in a timely manner and open server ports are known. Finally, the scalability of the model is immediate and architecture administration is simplified since (most of) the workload is concentrated on the server.
+<br>
 
 ```
 ICOLLARE CODICE QUA
@@ -114,8 +132,9 @@ ICOLLARE CODICE QUA
 ```
 
 ### Color recognition
-
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap  <br>
+Creating a color recognizer that uses the camera is no big deal, the difficulty occurs when you have to recognize the color of a screen.
+On a technical level creating the final color scanner was a bit challenging. When capturing a screen with the camera, the colors are distorted according to the device display. We had to calibrate the color scanner to the perception of different devices by averaging the color codes in HSB (Hue, Saturation, Brightness) and adding a threshold.
+ <br>
 
 ```
 ICOLLARE CODICE QUA
