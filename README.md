@@ -84,7 +84,7 @@ The Server scans the data package and collects the messages, then it takes the m
   <img src="images/place-holder.png" width="700" />
 </p>
 
-Client’s collects the data package from the server. <br>
+Client collects the data package from the server. <br>
 
 ### Chat page
 <p align="center">
@@ -102,7 +102,7 @@ After collecting the data, the message is displayed on the chat section.
   <img src="images/place-holder.png" width="700" />
 </p>
 
-To make the client-server model more intuitive and easy to understand,we have reworked the steps that would have been handled automatically by the computer, turning them into tasks to be taken by participants<br>
+To make the client-server model more intuitive and easy to understand,we have reworked the steps that would have been handled automatically by the computer, turning them into tasks to be taken by participants:<br>
 -client sends a request to the server by writing a message and packaging the data.<br>
 -server finds the packaged data in a 3D ascii form and collects it with the scanner.<br>
 -server transports the packaged data to other clients, which also collect it with their devices.<br>
