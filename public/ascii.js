@@ -37,20 +37,6 @@ function appearSend() {
   init();
 }
 
-function animazioneStart() {
-    init();
-    let raggioStart = 200;
-    let facceStart = 0;
-    
-        sphere = new THREE.Mesh(
-            new THREE.TetrahedronGeometry(raggioStart, facceStart),
-            new THREE.MeshPhongMaterial({ color: "green", flatShading: true })
-          );
-          sphere.name = "sphere";
-          sphere.receiveShadow = true;
-          sphere.castShadow = true;
-          scene.add(sphere);
-    }
 
 function getmydata() {
   myMessage = document.getElementById("message-input").value;
@@ -75,9 +61,7 @@ function getmydata() {
   if (radius < radiusArr[radiusArr.length - 2]) {
     a += 1;
 
-    document
-      .getElementById("ascicanvas")
-      .removeChild(effect[a - 1].domElement);
+    document.getElementById("ascicanvas").removeChild(effect[a - 1].domElement);
     init();
 
     sphere = new THREE.Mesh(

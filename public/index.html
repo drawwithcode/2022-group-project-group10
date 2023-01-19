@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
     <title>Introduzione</title>
-
     <link rel="stylesheet" type="text/css" href="style.css" />
 
     <script src="libraries/p5.min.js"></script>
@@ -13,14 +12,11 @@
   </head>
 
   <body>
-    <!--
-    <a href="globalChat_index.html" style="display: none" id="lim-enter"><button>SONO LA LIM</button></a>
- <a class="access-chat" href="globalChat_index.html"> SONO LA CHAT </a>
-    <a href="Scanner.html"> SCANNER </a>-->
 
     <div class="box" style="padding: 0.5%">
+      <div id="ascicanvas1"></div>
 
-      <div class="mySlides">Client-server unraveled
+      <div class="mySlides" style="font-size: 80pt; mix-blend-mode: difference; line-height: 90%; color: #ffffff">Just <br> a chat
       </div>
 
       <div class="mySlides">
@@ -43,7 +39,6 @@
         Arrange yourself according to the colors on the floor.
       </div>
 
-      <div id="ascicanvas1"></div>
     </div>
 
 
@@ -56,6 +51,7 @@ Politecnico di Milano <br> Scuola del Design <br> Communication Design<br><br>
 Faculty:<br> Michele Mauri <br> Andrea Benedetti<br> Tommaso Elli
     
     </h1>
+      <div class="nav-placeholder"></div>
       <a class="closeabout" onclick="closeAbout()">Close</a>
     </div>
 
@@ -90,6 +86,9 @@ import { AsciiEffect } from "three/addons/effects/AsciiEffect.js";
 import { PolyhedronGeometry } from "./node_modules/three/src/geometries/PolyhedronGeometry.js";
 
 document.querySelector(".next").addEventListener("click", animazioneStart);
+document.querySelector(".prev").addEventListener("click", riduciStart);
+
+
 
 let camera, scene, renderer;
 let cameraTarget = new THREE.Vector3(0, 0, 0);
@@ -100,19 +99,11 @@ const start = Date.now();
 let directionalLight1;
 let directionalLight2;
 let a = 0;
-let facceStart = 0;
-let raggioStart = 80;
-
-
-function animazioneStart() {
-  init();
-  console.log("AAA");
-
-    facceStart += 1;
-    raggioStart += 20;
-
-    
-        sphere = new THREE.Mesh(
+let facceStart = 4;
+let raggioStart = 480;
+ 
+init()
+sphere = new THREE.Mesh(
             new THREE.TetrahedronGeometry(raggioStart, facceStart),
             new THREE.MeshPhongMaterial({ color: "green", flatShading: true })
           );
@@ -120,6 +111,42 @@ function animazioneStart() {
           sphere.receiveShadow = true;
           sphere.castShadow = true;
           scene.add(sphere);
+
+
+function animazioneStart() {
+  console.log("AAA");
+  a += 1;
+
+    facceStart -= 1;
+    raggioStart -= 80;
+
+        document.getElementById("ascicanvas1").removeChild(effect[a - 1].domElement);
+    init();
+    
+    sphere = new THREE.Mesh(
+            new THREE.TetrahedronGeometry(raggioStart, facceStart),
+            new THREE.MeshPhongMaterial({ color: "green", flatShading: true })
+          );
+          sphere.name = "sphere";
+          sphere.receiveShadow = true;
+          sphere.castShadow = true;
+          scene.add(sphere);
+    }
+
+function riduciStart() {
+
+  facceStart += 1;
+  raggioStart += 80;
+  sphere = new THREE.Mesh(
+            new THREE.TetrahedronGeometry(raggioStart, facceStart),
+            new THREE.MeshPhongMaterial({ color: "green", flatShading: true })
+          );
+          sphere.name = "sphere";
+          sphere.receiveShadow = true;
+          sphere.castShadow = true;
+          scene.add(sphere);
+
+  
     }
 
 
@@ -138,7 +165,7 @@ function init() {
   renderer.setSize(window.innerWidth, window.innerHeight);
   //renderer.setClearColor( 0xffffff, 0);
 
-  effect.push(new AsciiEffect(renderer, "#@%=+-:. ", { invert: true }));
+  effect.push(new AsciiEffect(renderer, "8*=+-:. ", { invert: true }));
   effect[a].setSize(window.innerWidth, window.innerHeight);
   effect[a].domElement.style.color = "black";
   //effect[a].domElement.style.backgroundColor = 'white';
