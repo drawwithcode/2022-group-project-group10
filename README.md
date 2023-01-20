@@ -51,7 +51,7 @@ The other clients have to collect the package from the server and with that they
 
 ### Welcome page
 <p align="center">
-  <img src="welcome.gif" width="700" />
+  <img src="images/welcome.gif" width="700" />
 </p>
 
 In the welcome page there is a short slideshow explaining how the prototype works. <br>
