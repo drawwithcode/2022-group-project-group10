@@ -114,7 +114,7 @@ To collect the message, the scanner relies on the color of the participant's scr
 ### Server
 
 One of the main coding challenges consists in properly taking advantage of the socket.io library to make the user understand the complexity behind client/server connections.
-As if that were not enough, we had to complicate a process that is normally completely managed by the computer, by creating a fake server on a client to expose how an actual chat works.To do this we have to check all the phases and recreate all  checkpoints that normally are auto-managed, adding different actions for each step and make the operation look real
+As if that were not enough, we had to complicate a process that is normally completely managed by the computer, by creating a fake server on a client to expose how an actual chat works.To do this we have to check all the phases and recreate all  checkpoints that normally are auto-managed, adding different actions for each step and make the operation look real.
 <br>
 
 ```
@@ -168,43 +168,6 @@ function newConnection(newSocket) {
       globalChat = undefined;
       io.emit("chat disconnected");
     }
-
-    let index = userArray.indexOf(newSocket.id);
-    if (index > -1) {
-      delete userArray[index];
-      if (userArray.length > 5) {
-        userArray.pop();
-      }
-      console.log(userArray);
-      io.emit("updateUsers", userArray);
-    }
-  });
-
-  newSocket.on("pending-message", (user) => {
-    io.emit("pending-message", user.index);
-  });
-
-  newSocket.on("send-chat-message", (user) => {
-    console.log(user.message);
-    newSocket.broadcast.emit("broadcast-message", user);
-    index = userArray.indexOf(newSocket.id);
-    messageSent[index - 1] = "sent";
-  });
-
-  newSocket.on("get-message", (index) => {
-    if (typeof userArray[index] != "undefined") {
-      io.to(userArray[index]).emit("message-request");
-      console.log(index + "  è stato scansionato id:  " + userArray[index]);
-    } else {
-      console.log("il client " + index + " non è connesso");
-    }
-  });
-
-  newSocket.on("show-message", (index) => {
-    newSocket.to(userArray[index]).emit("show-message");
-    messageSent[index - 1] = "sent";
-    console.log(userArray);
-    console.log(messageSent);
 ```
 
 ### Color recognition
@@ -323,10 +286,6 @@ function getmydata() {
 
 init();
 animate();
-
-function map_range(value, low1, high1, low2, high2) {
-  return low2 + ((high2 - low2) * (value - low1)) / (high1 - low1);
-}
 
 function init() {
   camera = new THREE.PerspectiveCamera(
