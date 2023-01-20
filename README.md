@@ -7,7 +7,7 @@
 1. [Project](#project) <br>
   1.1 [Concept](#concept) <br>
   1.2 [Technical requirements](#technical-requirements) <br>
-  1.3 [Context of use and device](#context-of-use-and-device) <br>
+  1.3 [Context of use](#context-of-use) <br>
 3. [Structure](#structure) <br>
   2.1 [Welcome page](#welcome-page) <br>
   2.2 [Client or Server](#client-or-server) <br> 
@@ -34,12 +34,9 @@ This experience aims to make more understandable to people what happens on a dai
 This project wants to recreate this type of intangible connection in a physical space by making it tangible, entrusting the sending and receiving of these messages to people.
 The prototype makes people move along the intangible flows that would otherwise accomplish data in the Web. It wants to expose the path that data takes before it reaches its destination, demonstrating in actual how this technology works.
 
-“Invisible things are the ones taken for granted: we do not focus our attention on the hammer itself when we use it – we just use it” 
+> "Invisible things are the ones taken for granted: we do not focus our attention on the hammer itself when we use it – we just use it” 
+Hallnäs & Redström, 2002
 
-(Hallnäs & Redström, 2002)
-
-  <br>
-  
 ### Technical requirements 
 Five smartphones connected to the same wifi connection.
 
@@ -87,7 +84,7 @@ The Server frames the data package of the client with the phone camera in order 
 
 Clients collect the data package from the server by scanning the data package.<br>
 
-### Chat page
+### Chat pages
 <p align="center">
   <img src="images/place-holder.png" width="700" />
 </p>
