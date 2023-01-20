@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img src="images/logo.png" width="windowwidth" />
+  <img src="images/cover.gif" width="windowwidth" />
 </p>
 
 ### Table of Contents
