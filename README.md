@@ -38,7 +38,7 @@ The prototype makes people move along the intangible flows that would otherwise 
 Hallnäs & Redström, 2002
 
 ### Technical requirements 
-Five smartphones connected to the same wifi connection.
+Five smartphones connected to internet.
 
 ### Context of use
 This exhibition is designed within a space for five people arranged in as many stations, characterized by colorful cardboards
