@@ -102,8 +102,9 @@ function messageReady(message) {
   div.addClass("message");
   div.addClass(divClass);
 
-  document.getElementById("receive").value = savedMessage;
-  document.getElementById("receive").setAttribute('value',savedMessage);
+  document.getElementById("receive").innerHTML = savedMessage;
+  document.querySelector("#ascicanvas2").style.display = "block";
+
   
   collectContainer.style.display = "none";
   doneButton.style.display = "block";

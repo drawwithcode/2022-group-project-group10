@@ -47,15 +47,15 @@ function getmydata() {
 
   radiusArr.push(myMessage.length * 10);
   radius = radiusArr[radiusArr.length - 1];
-  let raggio = Math.round(map_range(myMessage.length, 0, 140, 120, 600));
+  let raggio = Math.round(map_range(myMessage.length, 0, 50, 170, 600));
 
   sphere = new THREE.Mesh(
     new THREE.TetrahedronGeometry(raggio, facce),
     new THREE.MeshPhongMaterial({ color: "green", flatShading: true })
   );
   sphere.name = "sphere";
-  sphere.position.set(0, 150, 0);
   scene.add(sphere);
+
 
   if (radius < radiusArr[radiusArr.length - 2]) {
     a += 1;
@@ -68,7 +68,6 @@ function getmydata() {
       new THREE.MeshPhongMaterial({ color: "green", flatShading: true })
     );
     sphere.name = "sphere";
-    sphere.position.set(0, 150, 0);
     scene.add(sphere);
   }
   console.log(sphere.position);
