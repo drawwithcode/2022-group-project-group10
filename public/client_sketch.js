@@ -111,7 +111,7 @@ function showMessage() {
   let div = p1.createDiv(recievedMessage);
   div.parent(chat);
   let divClass = "client" + recievedMessageIndex;
-  div.addClass("box");
+  div.addClass("message");
   div.addClass(divClass);
   pendingServerMessage = false;
 
@@ -293,13 +293,15 @@ p2.draw = function () {
 
         if (hue < 20 && satDiff < 25 && briDiff < 25) {
           targetColors[3].total++;
-        } else if (hueDiff < 25 && satDiff < 30 && briDiff < 20) {
+        } else if (hueDiff < 30 && satDiff < 35 && briDiff < 25) {
           color.total++;
         }
       });
     }
   }
 
+
+  
   //per tracking sotto di h s b
   
 
