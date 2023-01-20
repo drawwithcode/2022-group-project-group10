@@ -2,6 +2,7 @@ let clientSocket = io();
 let colorsArray;
 let windowWidth = window.innerWidth;
 let windowHeight = window.innerHeight;
+let ratio;
 
 let recievedMessage;
 let recievedMessageIndex;
@@ -14,13 +15,16 @@ let sendButton = document.getElementById("send-button");
 let chat = document.querySelector(".messages-container");
 
 //Navigazione automatica che attiva e disattiva le sezioni
-let navBtn = document.querySelectorAll(".navbtn");
-let currentActiveBtn = document.querySelector(".navbtn.active");
+let navBtn = document.querySelectorAll(".navbtn")
 let sections = document.querySelectorAll(".container");
-let currentSection = document.querySelector(".container.active");
+
 
 navBtn.forEach(function (btn) {
   btn.addEventListener("click", function () {
+
+    let currentSection = document.querySelector(".container.active");
+    let currentActiveBtn = document.querySelector(".navbtn.active");
+
     let id = btn.id;
     let sectionClass = String("." + id + "-container");
     let targetSection = document.querySelector(sectionClass);
@@ -88,11 +92,11 @@ function sendMessage() {
     console.log("sto inviando:  " + user.message);
     clientSocket.emit("send-chat-message", user);
 
-    let div = p1.createDiv(user.message);
-    div.parent(chat);
+    let div = p2.createDiv(user.message);
     let divClass = "client" + user.index;
     div.addClass("message");
     div.addClass(divClass);
+    div.parent(chat);
   }
 }
 
@@ -111,10 +115,18 @@ function showMessage() {
   div.addClass(divClass);
   pendingServerMessage = false;
 
-  sections[1].classList.remove("active")
-  sections[2].classList.add("active")
-  navBtn[1].classList.remove("active")
-  navBtn[2].classList.add("active")
+  let chatNavBtn = document.querySelector(".navbtn#chat");
+  let currentActiveBtn = document.querySelector(".navbtn.active");
+  let chatSection = document.querySelector(".container.chat-container");
+  let currentSection = document.querySelector(".container.active");
+
+  console.log(chatNavBtn, currentActiveBtn, chatSection, currentSection)
+
+  currentActiveBtn.classList.remove("active")
+  currentSection.classList.remove("active")
+  chatNavBtn.classList.add("active")
+  chatSection.classList.add("active")
+
   
 }
 
@@ -148,8 +160,8 @@ let p2 = new p5(sketch);
 var capture;
 var w = window.innerWidth;
 var h = w;
-let subW = Math.round(w / 5);
-let subH = Math.round(w / 5);
+let subW = Math.round(w / 8);
+let subH = Math.round(w / 8);
 let subX = Math.round(w / 2 - subW / 2);
 let subY = Math.round(h / 1.5);
 
@@ -179,15 +191,15 @@ p2.setup = function () {
   targetColors = [
     {
       name: "green",
-      hue: 170,
+      hue: 160,
       saturation: 75,
-      lightness: 43,
+      lightness: 50 ,
       total: 0,
       index: 1,
     },
     {
       name: "purple",
-      hue: 280,
+      hue: 290,
       saturation: 80,
       lightness: 50,
       total: 0,
@@ -195,8 +207,8 @@ p2.setup = function () {
     },
     {
       name: "yellow",
-      hue: 85,
-      saturation: 68,
+      hue: 70,
+      saturation: 80,
       lightness: 55,
       total: 0,
       index: 3,
@@ -204,12 +216,12 @@ p2.setup = function () {
     {
       name: "red",
       hue: 340,
-      saturation: 75,
-      lightness: 60,
+      saturation: 85,
+      lightness: 62,
       total: 0,
       index: 4,
     },
-    { name: "blue", hue: 224, saturation: 100, lightness: 50, total: 0 },
+    { name: "blue", hue: 230, saturation: 95, lightness: 60, total: 0 },
   ];
 
   capture = p2.createCapture(
@@ -289,10 +301,10 @@ p2.draw = function () {
   }
 
   //per tracking sotto di h s b
-  //findAverageColor();
+  
 
   targetColors.forEach(function (color) {
-    let ratio = (100 * color.total) / (subW * subH);
+    ratio = (100 * color.total) / (subW * subH);
     if (ratio >= 70) {
       if (color.name == "blue") {
         colorFound = "HO TROVATO: " + color.name;
@@ -302,7 +314,10 @@ p2.draw = function () {
         }
       }
     }
+    //findAverageColor();
   });
+
+  
 
   // p2.textAlign(p2.CENTER);
   // p2.textSize(32);
@@ -372,12 +387,14 @@ function findAverageColor() {
   p2.text("hue", 10, w + 30);
   p2.text("saturation", 10, w + 130);
   p2.text("brightness", 10, w + 230);
+  p2.text("ratio", 10, w + 330);
 
   p2.colorMode(p2.HSL, 360, 100, 100);
   p2.fill(avgHue, avgSat, avgLig);
   p2.rect(10, w + 50, p2.map(avgHue, 0, 360, 0, p2.width - 50), 30);
   p2.rect(10, w + 150, p2.map(avgSat, 0, 100, 0, p2.width - 50), 30);
   p2.rect(10, w + 250, p2.map(avgLig, 0, 100, 0, p2.width - 50), 30);
+  p2.rect(10, w + 350, p2.map(ratio, 0, 100, 0, p2.width - 50), 30);
   p2.rect(w / 2, h / 1.5, subW + 2, subH + 2);
   p2.noFill();
   p2.rect(w / 2, h / 2, (h * 0.9 * 9) / 18, h * 0.9, 20);
@@ -398,4 +415,6 @@ function findAverageColor() {
     p2.map(avgLig, 0, 100, 0, p2.width - 50) + 20,
     w + 250 + 15
   );
+
+  p2.text(p2.round(ratio), p2.map(ratio, 0, 100, 0, p2.width - 50) + 20, w+ 350 +15)
 }

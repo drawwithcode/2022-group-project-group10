@@ -7,6 +7,7 @@ let windowHeight = window.innerHeight;
 let chat = document.querySelector(".messages-container");
 let doneButton = document.querySelector("#done-button1");
 let savedMessage = null;
+let ratio 
 
 //Navigazione automatica che attiva e disattiva le sezioni
 let navBtn = document.querySelectorAll(".navbtn");
@@ -34,6 +35,8 @@ doneButton.addEventListener("click", function () {
   savedMessage = null;
   collectContainer.style.display = "inline-block";
   doneButton.style.display = "none";
+  document.querySelector("#ascicanvas2").style.display = "none";
+
 });
 
 //oggetto utente che contiene ruolo, index, colore e messaggio che vuole mandare
@@ -125,8 +128,8 @@ let p2 = new p5(sketch);
 var capture;
 var w = window.innerWidth;
 var h = w;
-let subW = Math.round(w / 5);
-let subH = Math.round(w / 5);
+let subW = Math.round(w / 8);
+let subH = Math.round(w / 8);
 let subX = Math.round(w / 2 - subW / 2);
 let subY = Math.round(h / 1.5);
 
@@ -162,15 +165,15 @@ p2.setup = function () {
   targetColors = [
     {
       name: "green",
-      hue: 170,
+      hue: 160,
       saturation: 75,
-      lightness: 43,
+      lightness: 50 ,
       total: 0,
       index: 1,
     },
     {
       name: "purple",
-      hue: 280,
+      hue: 290,
       saturation: 80,
       lightness: 50,
       total: 0,
@@ -178,8 +181,8 @@ p2.setup = function () {
     },
     {
       name: "yellow",
-      hue: 85,
-      saturation: 68,
+      hue: 70,
+      saturation: 80,
       lightness: 55,
       total: 0,
       index: 3,
@@ -187,12 +190,12 @@ p2.setup = function () {
     {
       name: "red",
       hue: 340,
-      saturation: 75,
-      lightness: 60,
+      saturation: 85,
+      lightness: 62,
       total: 0,
       index: 4,
     },
-    /* { name: "blue", hue: 224, saturation: 100, lightness: 50, total: 0 }, */
+    /* { name: "blue", hue: 230, saturation: 95, lightness: 60, total: 0 }, */
   ];
 
   capture = p2.createCapture(
@@ -271,10 +274,9 @@ p2.draw = function () {
   }
 
   //per tracking sotto di h s b
-  //findAverageColor();
 
   targetColors.forEach(function (color) {
-    let ratio = (100 * color.total) / (subW * subH);
+    ratio = (100 * color.total) / (subW * subH);
     if (ratio >= 70) {
       colorFound = "HO TROVATO: " + color.name;
       if (pendingMessages[color.index] == true) {
@@ -283,6 +285,10 @@ p2.draw = function () {
         }
       }
     }
+
+  //findAverageColor()
+
+
   });
 
   // p2.textAlign(p2.CENTER);
@@ -360,12 +366,14 @@ function findAverageColor() {
   p2.text("hue", 10, w + 30);
   p2.text("saturation", 10, w + 130);
   p2.text("brightness", 10, w + 230);
+  p2.text("ratio", 10, w + 330);
 
   p2.colorMode(p2.HSL, 360, 100, 100);
   p2.fill(avgHue, avgSat, avgLig);
   p2.rect(10, w + 50, p2.map(avgHue, 0, 360, 0, p2.width - 50), 30);
   p2.rect(10, w + 150, p2.map(avgSat, 0, 100, 0, p2.width - 50), 30);
   p2.rect(10, w + 250, p2.map(avgLig, 0, 100, 0, p2.width - 50), 30);
+  p2.rect(10, w + 350, p2.map(ratio, 0, 100, 0, p2.width - 50), 30);
   p2.rect(w / 2, h / 1.5, subW + 2, subH + 2);
   p2.noFill();
   p2.rect(w / 2, h / 2, (h * 0.9 * 9) / 18, h * 0.9, 20);
@@ -374,6 +382,7 @@ function findAverageColor() {
   p2.text(p2.round(avgHue), p2.map(avgHue, 0, 360, 0, p2.width - 50) + 20, w + 50 + 15);
   p2.text(p2.round(avgSat), p2.map(avgSat, 0, 100, 0, p2.width - 50) + 20, w + 150 + 15);
   p2.text(p2.round(avgLig), p2.map(avgLig, 0, 100, 0, p2.width - 50) + 20, w + 250 + 15);
+  p2.text(p2.round(ratio), p2.map(ratio, 0, 100, 0, p2.width - 50) + 20, w+ 350 +15)
 }
 
 // PER MANDARE E RICEVERE MESSAGGI

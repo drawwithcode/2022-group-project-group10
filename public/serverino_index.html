@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
     <title>Server</title>
 
@@ -79,6 +79,14 @@
       let raggioServer;
       let facceServer;
       let nParoleS;
+
+      document.querySelector("#done-button1").addEventListener("click", noAscii);
+
+function noAscii() {
+document.querySelector("#ascicanvas2").style.display = "none";
+}
+
+
 
       // $("body").on("DOMSubtreeModified", "#receive", function () {
       //   console.log("CE L'ABBIAMO FATTA");

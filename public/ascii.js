@@ -45,10 +45,11 @@ function getmydata() {
 
   radiusArr.push(myMessage.length * 10);
   radius = radiusArr[radiusArr.length - 1];
-  let raggio = Math.round(map_range(myMessage.length, 0, 50, 170, 450));
+  let raggio = Math.round(map_range(myMessage.length, 0, 50, 170, 350));
 
   sphere = new THREE.Mesh(new THREE.TetrahedronGeometry(raggio, facce), new THREE.MeshPhongMaterial({ color: "green", flatShading: true }));
   sphere.name = "sphere";
+  // sphere.position.set(0, 100, 0);
   scene.add(sphere);
 
   if (radius < radiusArr[radiusArr.length - 2]) {
@@ -90,6 +91,9 @@ function init() {
   effect.push(new AsciiEffect(renderer, "#@%=+-:. ", { invert: true }));
   effect[a].setSize(window.innerWidth, window.innerHeight);
   effect[a].domElement.style.color = "black";
+  effect[a].domElement.style.position = "absolute";
+  effect[a].domElement.style.top = "-50%";
+
   // effect[a].domElement.style.top = "-10vh";
 
   //effect[a].domElement.style.backgroundColor = 'white';

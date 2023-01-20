@@ -44,6 +44,7 @@ canvas {
   text-align: center;
   display: flex;
   position: fixed;
+  z-index: 1000;
 }
 
 
@@ -154,7 +155,7 @@ a {
   left: 0;
   background-color: white;
   position: fixed;
-  z-index: 2;
+  z-index: 10000;
   /* display: flex;
   flex-direction: column;
   justify-content: center;
@@ -228,7 +229,7 @@ a {
 
 .message {
   padding: 10px 0;
-  width: 100%;
+  width: 100vw;
   font-size: 30pt;
   line-height: 32pt;
   font-weight: bold;
@@ -268,6 +269,7 @@ a {
   /* top: -3vh; */
   width: 100vw;
   height: 40vh;
+  /* font-weight: normal; */
   /* background-color: red; */
 }
 
@@ -279,7 +281,7 @@ a {
 }
 
 #scan-text {
-  bottom: 40px;
+  bottom: 25px;
   height: 66px;
   text-align: left;
   padding: 3px;
