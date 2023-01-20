@@ -361,6 +361,6 @@ Enrico Isidori
 
 
 ## Course
-[Creative Coding 2022/2023](https://drawwithcode.github.io/2023/) <br>
+[Creative Coding 2022/2023](https://drawwithcode.github.io/) <br>
 **Politecnico di Milano** - Scuola del Design - Communication Design <br>
 **Faculty:** Michele Mauri, Andrea Benedetti, Tommaso Elli <br>
