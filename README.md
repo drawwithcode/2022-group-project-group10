@@ -1,13 +1,13 @@
 
 <p align="center">
-  <img src="images/logo.png" width="windowwidth" />
+  <img src="images/cover.gif" width="windowwidth" />
 </p>
 
 ### Table of Contents
 1. [Project](#project) <br>
   1.1 [Concept](#concept) <br>
   1.2 [Technical requirements](#technical-requirements) <br>
-  1.3 [Context of use and device](#context-of-use-and-device) <br>
+  1.3 [Context of use](#context-of-use) <br>
 3. [Structure](#structure) <br>
   2.1 [Welcome page](#welcome-page) <br>
   2.2 [Client or Server](#client-or-server) <br> 
@@ -34,12 +34,9 @@ This experience aims to make more understandable to people what happens on a dai
 This project wants to recreate this type of intangible connection in a physical space by making it tangible, entrusting the sending and receiving of these messages to people.
 The prototype makes people move along the intangible flows that would otherwise accomplish data in the Web. It wants to expose the path that data takes before it reaches its destination, demonstrating in actual how this technology works.
 
-“Invisible things are the ones taken for granted: we do not focus our attention on the hammer itself when we use it – we just use it” 
+> "Invisible things are the ones taken for granted: we do not focus our attention on the hammer itself when we use it – we just use it” 
+Hallnäs & Redström, 2002
 
-(Hallnäs & Redström, 2002)
-
-  <br>
-  
 ### Technical requirements 
 Five smartphones connected to the same wifi connection.
 
@@ -54,42 +51,42 @@ The other clients have to collect the package from the server and with that they
 
 ### Welcome page
 <p align="center">
-  <img src="images/place-holder.png" width="700" />
+  <img src="images/screen-1.png" width="700" />
 </p>
 
 In the welcome page there is a short slideshow explaining how the prototype works. <br>
 
 ### Client or Server
 <p align="center">
-  <img src="images/place-holder.png" width="700" />
+  <img src="images/screen-2.png" width="700" />
 </p>
 
 The first participant who enters the room will become a server, the next four will become clients. <br>
 
 ### Client's send page
 <p align="center">
-  <img src="images/place-holder.png" width="700" />
+  <img src="images/screen-3.png" width="700" />
 </p>
 
 Clients write and package messages and then wait for the server to pick them up.<br>
 
 ### Server's collect page
 <p align="center">
-  <img src="images/place-holder.png" width="700" />
+  <img src="images/screen-4.png" width="700" />
 </p>
 
 The Server frames the data package of the client with the phone camera in order to collect the message, then it shows the data package to all the other clients. <br>
 
 ### Client's collect page
 <p align="center">
-  <img src="images/place-holder.png" width="700" />
+  <img src="images/screen-5.png" width="700" />
 </p>
 
 Clients collect the data package from the server by scanning the data package.<br>
 
-### Chat page
+### Chat pages
 <p align="center">
-  <img src="images/place-holder.png" width="700" />
+  <img src="images/screen-6.png" width="700" />
 </p>
 
 When a client collects the data, the message is finally displayed on the chat section.
@@ -99,9 +96,6 @@ When a client collects the data, the message is finally displayed on the chat se
 ## Design challenges
 
 ### Communicating data exchange
-<p align="center">
-  <img src="images/place-holder.png" width="700" />
-</p>
 
 To make the client-server model more intuitive and easy to understand, we have reworked the steps that would have been handled automatically by the computer, turning them into tasks to be taken by participants:
 -Clients write a message, package the data and ask the server to take it.
@@ -361,6 +355,6 @@ Enrico Isidori
 
 
 ## Course
-[Creative Coding 2022/2023](https://drawwithcode.github.io/2023/) <br>
+[Creative Coding 2022/2023](https://drawwithcode.github.io/) <br>
 **Politecnico di Milano** - Scuola del Design - Communication Design <br>
 **Faculty:** Michele Mauri, Andrea Benedetti, Tommaso Elli <br>
