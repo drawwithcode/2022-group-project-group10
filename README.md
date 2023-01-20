@@ -51,7 +51,7 @@ The other clients have to collect the package from the server and with that they
 
 ### Welcome page
 <p align="center">
-  <img src="images/screen-1.png" width="700" />
+  <img src="images/welcome.gif" width="700" />
 </p>
 
 In the welcome page there is a short slideshow explaining how the prototype works. <br>
@@ -65,7 +65,7 @@ The first participant who enters the room will become a server, the next four wi
 
 ### Client's send page
 <p align="center">
-  <img src="images/screen-3.png" width="700" />
+  <img src="images/send.gif" width="700" />
 </p>
 
 Clients write and package messages and then wait for the server to pick them up.<br>
