@@ -7,7 +7,6 @@ document.querySelector("#message-input").addEventListener("input", getmydata);
 document.querySelector("#send-button").addEventListener("click", disappearSend);
 document.querySelector("#done-button").addEventListener("click", appearSend);
 
-
 let camera, scene, renderer;
 let cameraTarget = new THREE.Vector3(0, 0, 0);
 let effect = [];
@@ -37,7 +36,6 @@ function appearSend() {
   init();
 }
 
-
 function getmydata() {
   myMessage = document.getElementById("message-input").value;
   console.log("lettere: " + myMessage.length);
@@ -47,15 +45,11 @@ function getmydata() {
 
   radiusArr.push(myMessage.length * 10);
   radius = radiusArr[radiusArr.length - 1];
-  let raggio = Math.round(map_range(myMessage.length, 0, 50, 170, 600));
+  let raggio = Math.round(map_range(myMessage.length, 0, 50, 170, 450));
 
-  sphere = new THREE.Mesh(
-    new THREE.TetrahedronGeometry(raggio, facce),
-    new THREE.MeshPhongMaterial({ color: "green", flatShading: true })
-  );
+  sphere = new THREE.Mesh(new THREE.TetrahedronGeometry(raggio, facce), new THREE.MeshPhongMaterial({ color: "green", flatShading: true }));
   sphere.name = "sphere";
   scene.add(sphere);
-
 
   if (radius < radiusArr[radiusArr.length - 2]) {
     a += 1;
@@ -63,10 +57,7 @@ function getmydata() {
     document.getElementById("ascicanvas").removeChild(effect[a - 1].domElement);
     init();
 
-    sphere = new THREE.Mesh(
-      new THREE.TetrahedronGeometry(raggio, facce),
-      new THREE.MeshPhongMaterial({ color: "green", flatShading: true })
-    );
+    sphere = new THREE.Mesh(new THREE.TetrahedronGeometry(raggio, facce), new THREE.MeshPhongMaterial({ color: "green", flatShading: true }));
     sphere.name = "sphere";
     scene.add(sphere);
   }
@@ -82,12 +73,7 @@ function map_range(value, low1, high1, low2, high2) {
 }
 
 function init() {
-  camera = new THREE.PerspectiveCamera(
-    100,
-    window.innerWidth / window.innerHeight,
-    1,
-    1000
-  );
+  camera = new THREE.PerspectiveCamera(100, window.innerWidth / window.innerHeight, 1, 1000);
   //camera.position.y = 150;
   camera.position.x = 500;
 

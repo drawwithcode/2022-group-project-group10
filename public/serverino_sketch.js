@@ -1,11 +1,11 @@
 let serverinoSocket = io();
 
-let roleAnnouncement = document.querySelector(".role-announcement")
+let roleAnnouncement = document.querySelector(".role-announcement");
 let messageForm = document.getElementById("collect-buttons");
 let windowWidth = window.innerWidth;
 let windowHeight = window.innerHeight;
 let chat = document.querySelector(".messages-container");
-let doneButton =  document.querySelector("#done-button1");
+let doneButton = document.querySelector("#done-button1");
 let savedMessage = null;
 
 //Navigazione automatica che attiva e disattiva le sezioni
@@ -30,14 +30,11 @@ navBtn.forEach(function (btn) {
   });
 });
 
-doneButton.addEventListener("click", function(){
- 
+doneButton.addEventListener("click", function () {
   savedMessage = null;
   collectContainer.style.display = "inline-block";
   doneButton.style.display = "none";
-
 });
-
 
 //oggetto utente che contiene ruolo, index, colore e messaggio che vuole mandare
 //inizialmente vuoto, poi viene definito con updateUsers
@@ -67,31 +64,27 @@ function newConnection() {
 }
 
 //NASCONDI ANNUNCIO RUOLO SE PREMO "OK"
-let roleAcceptance = document.querySelector(".role-accepted")
-roleAcceptance.addEventListener("click", function() {
+let roleAcceptance = document.querySelector(".role-accepted");
+roleAcceptance.addEventListener("click", function () {
   roleAnnouncement.style.display = "none";
-})
+});
 
 //Nascondi Collect e btn container in CHAT
-let chatBtn = document.querySelector("#chat")
-chatBtn.addEventListener("click", function() {
+let chatBtn = document.querySelector("#chat");
+chatBtn.addEventListener("click", function () {
   collectContainer.style.display = "none";
   document.querySelector("#done-button1").style.display = "none";
-})
-let collectBtn = document.querySelector("#collect")
-collectBtn.addEventListener("click", function() {
+});
+let collectBtn = document.querySelector("#collect");
+collectBtn.addEventListener("click", function () {
   collectContainer.style.display = "block";
   document.querySelector("#done-button1").style.display = "block";
-})
-
-
-
+});
 
 function messageReady(message) {
   deliverButtons.forEach((deliverButton, deliverIndex) => {
     if (deliverIndex != message.index - 1) {
       deliverButton.style.display = "inline";
-
     }
   });
 
@@ -102,13 +95,13 @@ function messageReady(message) {
   div.addClass("message");
   div.addClass(divClass);
 
-  document.getElementById("receive").innerHTML = savedMessage;
+  document.getElementById("receive").value = savedMessage;
+  document.getElementById("receive").style.display = "none";
+
   document.querySelector("#ascicanvas2").style.display = "block";
 
-  
   collectContainer.style.display = "none";
   doneButton.style.display = "block";
-
 }
 
 let sketch = function (p) {};
@@ -160,7 +153,6 @@ serverinoSocket.on("pending-message", function (index) {
 });
 
 p2.setup = function () {
-
   let collectCanva = p2.createCanvas(windowWidth, windowWidth);
   collectCanva.parent(cameraContainer);
   let d = p2.pixelDensity();
@@ -286,8 +278,7 @@ p2.draw = function () {
     if (ratio >= 70) {
       colorFound = "HO TROVATO: " + color.name;
       if (pendingMessages[color.index] == true) {
-
-        if(savedMessage == undefined){
+        if (savedMessage == undefined) {
           collectMessage(color.index);
         }
       }
@@ -301,7 +292,7 @@ p2.draw = function () {
 
   p2.noFill();
   p2.rect(w / 2, h / 2, (h * 0.9 * 9) / 18, h * 0.9, 20);
-}
+};
 
 function collectMessage(i) {
   console.log("ho preso un messaggio dal client n°" + i);
@@ -380,21 +371,9 @@ function findAverageColor() {
   p2.rect(w / 2, h / 2, (h * 0.9 * 9) / 18, h * 0.9, 20);
 
   p2.fill("black");
-  p2.text(
-    p2.round(avgHue),
-    p2.map(avgHue, 0, 360, 0, p2.width - 50) + 20,
-    w + 50 + 15
-  );
-  p2.text(
-    p2.round(avgSat),
-    p2.map(avgSat, 0, 100, 0, p2.width - 50) + 20,
-    w + 150 + 15
-  );
-  p2.text(
-    p2.round(avgLig),
-    p2.map(avgLig, 0, 100, 0, p2.width - 50) + 20,
-    w + 250 + 15
-  );
+  p2.text(p2.round(avgHue), p2.map(avgHue, 0, 360, 0, p2.width - 50) + 20, w + 50 + 15);
+  p2.text(p2.round(avgSat), p2.map(avgSat, 0, 100, 0, p2.width - 50) + 20, w + 150 + 15);
+  p2.text(p2.round(avgLig), p2.map(avgLig, 0, 100, 0, p2.width - 50) + 20, w + 250 + 15);
 }
 
 // PER MANDARE E RICEVERE MESSAGGI
