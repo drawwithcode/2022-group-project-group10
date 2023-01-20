@@ -51,42 +51,42 @@ The other clients have to collect the package from the server and with that they
 
 ### Welcome page
 <p align="center">
-  <img src="images/place-holder.png" width="700" />
+  <img src="images/screen-1.png" width="700" />
 </p>
 
 In the welcome page there is a short slideshow explaining how the prototype works. <br>
 
 ### Client or Server
 <p align="center">
-  <img src="images/place-holder.png" width="700" />
+  <img src="images/screen-2.png" width="700" />
 </p>
 
 The first participant who enters the room will become a server, the next four will become clients. <br>
 
 ### Client's send page
 <p align="center">
-  <img src="images/place-holder.png" width="700" />
+  <img src="images/screen-3.png" width="700" />
 </p>
 
 Clients write and package messages and then wait for the server to pick them up.<br>
 
 ### Server's collect page
 <p align="center">
-  <img src="images/place-holder.png" width="700" />
+  <img src="images/screen-4.png" width="700" />
 </p>
 
 The Server frames the data package of the client with the phone camera in order to collect the message, then it shows the data package to all the other clients. <br>
 
 ### Client's collect page
 <p align="center">
-  <img src="images/place-holder.png" width="700" />
+  <img src="images/screen-5.png" width="700" />
 </p>
 
 Clients collect the data package from the server by scanning the data package.<br>
 
 ### Chat pages
 <p align="center">
-  <img src="images/place-holder.png" width="700" />
+  <img src="images/screen-6.png" width="700" />
 </p>
 
 When a client collects the data, the message is finally displayed on the chat section.
@@ -96,9 +96,6 @@ When a client collects the data, the message is finally displayed on the chat se
 ## Design challenges
 
 ### Communicating data exchange
-<p align="center">
-  <img src="images/place-holder.png" width="700" />
-</p>
 
 To make the client-server model more intuitive and easy to understand, we have reworked the steps that would have been handled automatically by the computer, turning them into tasks to be taken by participants:
 -Clients write a message, package the data and ask the server to take it.
