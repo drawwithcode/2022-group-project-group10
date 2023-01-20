@@ -71,11 +71,17 @@ The first participant who enters the room will become a server, the next four wi
 Clients write and package messages and then wait for the server to pick them up.<br>
 
 ### Server's collect page
+<p align="center">
+  <img src="images/collect-1.png" width="700" />
+</p>
 
 
 The Server frames the data package of the client with the phone camera in order to collect the message, then it shows the data package to all the other clients. <br>
 
 ### Client's collect page
+<p align="center">
+  <img src="images/collect-2.png" width="700" />
+</p>
 
 
 Clients collect the data package from the server by scanning the data package.<br>
