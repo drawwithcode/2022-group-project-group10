@@ -43,6 +43,7 @@ function newConnection(newSocket) {
       } else {
         console.log(i + " libero");
         io.to(newSocket.id).emit("placeAvailable", i);
+        return;
       }
     }
   }

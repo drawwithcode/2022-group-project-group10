@@ -50,9 +50,9 @@ serverinoSocket.on("broadcast-message", messageReady);
 
 function updateUsers(userArray) {
   console.log(userArray);
-  if (userArray[0] !== serverinoSocket.id) {
+  /* if (userArray[0] !== serverinoSocket.id) {
     window.location.href = "index.html";
-  }
+  } */
 
   user.index = userArray.indexOf(serverinoSocket.id);
   user.c = "#0044ff";
